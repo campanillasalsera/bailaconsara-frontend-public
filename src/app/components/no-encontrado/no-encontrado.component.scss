@@ -1,0 +1,56 @@
+//Ajusta el padding del componente para que no quede oculto por el nav
+.padding-top-adjust {
+  padding-top: 112px;
+}
+
+.content-card-container {
+  width: 90%;
+  margin: 2rem auto;
+  border: 3px solid red;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.content-card {
+  width: 90%;
+  margin: auto;
+  background-color: transparent;
+}
+.subtitle {
+  width: 70%;
+  margin: 1rem auto;
+  text-align: center;
+}
+.notFoundCode {
+  text-align: center;
+  font-size: 150px;
+  margin: 4rem auto;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+//Ajusta el padding del componente para que no quede oculto por el nav
+@media (min-width: 600px) {
+  .padding-top-adjust {
+    padding-top: 128px;
+  }
+}
+
+/* Vista MINITablet*/
+@media screen and (min-width: 641px) and (max-width: 790px) {
+  /*Si la pantalla tiene enre 641 y 790 px*/
+  .content-card-container {
+    width: 80%;
+  }
+}
+
+/* Vista Tablet*/
+@media screen and (min-width: 791px) and (max-width: 1007px) {
+  .content-card-container {
+    width: 80%;
+  }
+}
+
+/***************** Vista PC 1008 ****************/
+@media screen and (min-width: 1008px) {
+  .content-card-container {
+    width: 70%;
+  }
+}

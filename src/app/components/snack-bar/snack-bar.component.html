@@ -1,0 +1,16 @@
+<!-- muestra un snackbar con el resultado del uso de un servicio -->
+<div class="flex" [ngClass]="getClass()">
+  <span class="text-white" matSnackBarLabel>
+    {{ data.message }}
+  </span>
+  <span matSnackBarActions class="flex justify-end">
+    <button
+      mat-button
+      matSnackBarAction
+      (click)="snackBarRef.dismiss()"
+      class="text-white"
+    >
+      OK
+    </button>
+  </span>
+</div>

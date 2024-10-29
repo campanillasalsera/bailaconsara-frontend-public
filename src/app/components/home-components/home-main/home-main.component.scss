@@ -1,0 +1,222 @@
+.text-x-large {
+  font-size: x-large;
+}
+
+.margin-top-2rem {
+  margin-top: 2rem;
+}
+
+.margin-bottom-2rem {
+  margin-bottom: 2rem;
+}
+
+/******************* BIENVENIDA ***************/
+.content-card {
+  width: 90%;
+  margin: auto;
+  border: 3px solid red;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.subtitle {
+  width: 70%;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+/******************* TITULO ***************/
+
+.titulo {
+  width: 70%;
+  margin: 1em auto;
+  padding: 1em;
+  text-align: center;
+}
+
+/******************* UBICACIÓN ***************/
+.margin-top-1rem {
+  margin-top: 1rem;
+}
+
+.boton-map {
+  width: 90%;
+  border-radius: 10px;
+  margin-bottom: 5rem;
+  box-shadow: 4px 4px 5px red;
+}
+
+/******************* REVIEWS ***************/
+.icon {
+  font-size: 3rem;
+  height: 3rem;
+  width: 3rem;
+}
+
+.botonera {
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+}
+
+.boton {
+  width: 90%;
+  border-radius: 10px;
+  border: 3px solid red;
+  margin-bottom: 5rem;
+  box-shadow: 2px 2px 2px rgb(253, 1, 1);
+}
+
+/******************* SALAS DE BAILE ***************/
+.imgBackground {
+  background-image: url("https://bailaconsara.com/assets/img/salas-baile-malaga.jpg");
+  background-attachment: local;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.salas-img {
+  width: 90%;
+  margin: auto;
+}
+
+/* Vista MINITablet*/
+@media screen and (min-width: 641px) and (max-width: 790px) {
+  /*Si la pantalla tiene enre 641 y 790 px*/
+
+  //no muestra la bienvenida del telefono
+  #bienvenida-tlf {
+    display: none;
+  }
+
+  .boton {
+    border: 3px solid red;
+    margin-bottom: 7rem;
+  }
+
+  .botonera {
+    margin: 6rem auto 2rem auto;
+  }
+
+  .margin-right-0 {
+    margin-right: 0;
+  }
+
+  .ubicacion-buttons {
+    display: flex;
+  }
+
+  //salas baile
+  .imgBackground {
+    background-image: url("https://bailaconsara.com/assets/img/salas-baile-malaga.jpg");
+    background-attachment: local;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+/* Vista Tablet*/
+@media screen and (min-width: 791px) and (max-width: 1007px) {
+  //no muestra la bienvenida del telefono
+  #bienvenida-tlf {
+    display: none;
+  }
+
+  .boton {
+    border: 4px solid red;
+    margin-bottom: 10rem;
+  }
+
+  .botonera {
+    margin: 7rem auto 4rem auto;
+  }
+
+  //salas baile
+  .imgBackground {
+    background-image: url("https://bailaconsara.com/assets/img/salas-baile-malaga.jpg");
+    background-attachment: local;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+/* Vista MINITablet*/
+@media screen and (min-width: 641px) and (max-width: 790px) {
+  /*Si la pantalla tiene enre 641 y 790 px*/
+
+  //reviews
+  .botonera-reviews {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
+
+/* Vista Tablet*/
+@media screen and (min-width: 791px) and (max-width: 1007px) {
+  /*Si la pantalla tiene enre 791 y 1007 px*/
+
+  //reviews
+  .botonera-reviews {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
+
+/***************** Vista PC 1008 ****************/
+@media screen and (min-width: 1008px) {
+  .content-card {
+    border: 0;
+    background-color: transparent;
+  }
+
+  //reviews
+  .botonera-reviews {
+    margin-top: 4rem;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .reviews {
+    width: 90%;
+    margin: 1rem auto;
+  }
+  .all-reviews {
+    display: none;
+  }
+
+  .reviews-pc {
+    display: flex;
+  }
+  .less-reviews {
+    display: block;
+    width: 30%;
+    margin: auto;
+    border: 3px solid red;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .icon {
+    color: red;
+    width: 80px;
+    height: 80px;
+    font-size: 80px;
+  }
+
+  .show-pc {
+    display: inline;
+  }
+
+  .title-style-pc {
+    font-size: x-large;
+  }
+
+  .subtitle {
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+
+  /******************* SALAS DE BAILE ***************/
+  .hide-pc {
+    display: none;
+  }
+}

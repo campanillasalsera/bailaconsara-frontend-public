@@ -1,0 +1,93 @@
+<div class="cookie-consent">
+  <!-- tool bar -->
+  <div class="toolBar">
+    <!-- botón whatsApp -->
+    <a href="https://wa.me/34649925439" target="_blank">
+      <button
+        mat-icon-button
+        class="icon-button-mid-size"
+        aria-label="boton whatsApp"
+      >
+        <img
+          src="assets/img/whatsapp_649-62-54-39.png"
+          alt="Clases de Salsa en Torremolinos"
+          title="Clases de Salsa en Torremolinos"
+        />
+      </button>
+    </a>
+    <!-- Logo Baila Con Sara -->
+    <figure id="logo" class="logo">
+      <img
+        src="assets/img/Logo-baila-con-sara.png"
+        alt="Clases de Salsa en Torremolinos"
+        title="Clases de Salsa en Torremolinos"
+        class="width-full"
+      />
+    </figure>
+    <!-- botón telefono -->
+    <a href="tel://649925439">
+      <button
+        mat-icon-button
+        class="icon-button-mid-size"
+        aria-label="boton llamada"
+      >
+        <mat-icon class="icon-red icon-mid-size">call</mat-icon>
+      </button>
+    </a>
+  </div>
+
+  <!-- muestra el video de presentación -->
+  <app-banner-video
+    [videoSrc]="videoSrc9s"
+    [applyPadding]="false"
+  ></app-banner-video>
+
+  <!-- muestra info sobre uso de cookies y boton aceptar o rechazar -->
+  <mat-card class="matCard">
+    <mat-card-content>
+      <p>Este sitio utiliza cookies necesarias para su funcionamiento.</p>
+      <p class="margin-top1rem">
+        <strong>
+          No utilizamos cookies analíticas ni de terceros para recoger
+          información sobre su navegación.
+        </strong>
+      </p>
+      <p class="margin-top1rem">
+        Para seguir navegando en nuestro sitio web, por favor, acepte el uso de
+        estas cookies necesarias. Si desea más información sobre nuestra
+        política de cookies y privacidad, puede
+        <a (click)="goToCookiesPolicy()" class="text-red pointer">
+          leer nuestra política aquí.</a
+        >
+      </p>
+    </mat-card-content>
+    <!-- botones de accion -->
+    <mat-card-actions class="margin-top1rem" align="end">
+      <button
+        mat-stroked-button
+        color="primary"
+        (click)="rejectCookies()"
+        class="matButton"
+      >
+        Rechazar
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="acceptCookies()"
+        class="matButton"
+      >
+        Aceptar
+      </button>
+    </mat-card-actions>
+    <!-- si el usario rechaza las cookies, se informa que no podrá seguir navegando -->
+    @if (showRejectedMessage) {
+    <mat-card-footer class="width-90 margin-auto padding-bottom-1rem">
+      <p>
+        Si no aceptas las cookies imprescindibles no podras seguir navegando en
+        nuestra web.
+      </p>
+    </mat-card-footer>
+    }
+  </mat-card>
+</div>

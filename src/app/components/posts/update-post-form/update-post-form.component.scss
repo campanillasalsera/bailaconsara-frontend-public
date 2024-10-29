@@ -1,0 +1,82 @@
+//Ajusta el padding del componente para que no quede oculto por el nav
+.padding-top-adjust {
+  padding-top: 112px;
+}
+
+.icono-container {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  background-color: red;
+  margin: 1rem auto;
+}
+.icons {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+  align-self: center;
+}
+
+.boton-cerrar {
+  margin: 1rem 1rem -2rem auto;
+}
+//contenedor del formulario
+.form-container {
+  background-color: #000000;
+  border-radius: 0.5rem;
+  border: 4px solid red;
+  margin-bottom: 2rem;
+}
+.post-form {
+  width: 90%;
+  margin: 2rem auto auto auto;
+}
+//tamaño de cada uno de los campos del formulario
+.form-field {
+  width: 100%;
+  margin-top: 1rem;
+  --mdc-filled-text-field-container-color: #212121;
+}
+.input-file {
+  margin-left: 1rem;
+}
+.editor-container {
+  background-color: #212121;
+  padding-bottom: 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+.editor-label {
+  background-color: #212121;
+  padding: 1rem;
+  margin-bottom: -0.3rem;
+  border-radius: 5px;
+  font-size: small;
+}
+.editor {
+  width: 90%;
+  margin: auto;
+}
+//margenes del boton submit
+.margin-top-bottom {
+  margin: 3rem auto;
+}
+
+//Ajusta el padding del componente para que no quede oculto por el nav
+@media (min-width: 600px) {
+  .padding-top-adjust {
+    padding-top: 128px;
+  }
+}
+
+/***************** Vista PC 1008 ****************/
+@media screen and (min-width: 1008px) {
+  .main-container {
+    width: 70%;
+    margin: auto;
+  }
+}

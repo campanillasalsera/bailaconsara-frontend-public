@@ -1,0 +1,185 @@
+<!-- contenedor principal de la sección de niveles -->
+<section class="section-niveles flex flex-column">
+  <div class="niveles-content flex">
+    <!-- icono y titulo -->
+    <div class="niveles-header flex flex-column align-items-center width-full">
+      <div class="icono-container margin-bottom-1rem margin-top1rem">
+        <img
+          mat-card-image
+          [src]="iconNivelesSrc"
+          class="width-full"
+          alt="Clases de bachata en Torremolinos"
+        />
+      </div>
+      <h2
+        class="text-center text-white text-x-large margin-top-1 width-full z-index-1000"
+        [ngStyle]="{ color: nivelesTitleColor }"
+      >
+        DIFERENTES
+        <span class="text-red">NIVELES</span>
+      </h2>
+      <h3 class="text-center">
+        DESCUBRE EL NIVEL <span class="text-red">PARA TI</span>
+      </h3>
+    </div>
+    <!-- tabs con los contenidos -->
+    <mat-tab-group>
+      <!-- tab TEST -->
+      <mat-tab>
+        <ng-template mat-tab-label> TEST </ng-template>
+        <div class="test-nivel-container">
+          <!-- selector de nivel -->
+          <div class="selector-nivel-container margin-top-1 margin-bottom-1rem">
+            <mat-form-field class="selector">
+              <mat-label class="text-white">SELECCIONA UN NIVEL</mat-label>
+              <!-- si cambia de nivel, se resetea la lista de elementos seleccionados -->
+              <mat-select
+                [(value)]="nivelSelected"
+                (openedChange)="resetItemList()"
+                class="matSelect"
+              >
+                <mat-option value="test" class="matOption"
+                  >No sé cual es mi nivel</mat-option
+                >
+                <mat-option value="principiantes" class="matOption"
+                  >Principiantes</mat-option
+                >
+                <mat-option value="intermedio" class="matOption"
+                  >Intermedio</mat-option
+                >
+                <mat-option value="avanzado" class="matOption"
+                  >Avanzado</mat-option
+                >
+                <mat-option value="kizomba" class="matOption"
+                  >Kizomba</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          @if (nivelSelected !== "") {
+          <!-- check-list donde comprobar si saben lo necesario -->
+          <div
+            class="check-list-nivel border-gris"
+            [ngStyle]="{ 'background-color': backgroundColor }"
+          >
+            @for (nivel of niveles; track $index) { @if (nivelSelected ===
+            nivel.nombre) {
+            <div class="nivel-header flex flex-column align-items-center">
+              <!-- asigna el número correspondiente al nivel selecionado -->
+              <div class="icono-container size-60 fondo-red position-top">
+                {{ nivel.number }}
+              </div>
+              <h2 class="text-large margin-top-1">
+                NIVEL <span class="text-red">{{ nivel.title }}</span>
+              </h2>
+              <h3 class="nivel-subtitle">{{ nivel.subtitle }}</h3>
+            </div>
+            <mat-selection-list #selectList class="nivel-selection-list">
+              <!-- recorre los items del listado de cada nivel -->
+              @for (item of nivel.listTest; track item) {
+              <!-- cuando se selecciona un item, se envía a un array para comprobar luego el nivel -->
+              <mat-list-option
+                class="matListOption"
+                (selectedChange)="pushSelectedItem(item)"
+              >
+                <mat-icon matListItemIcon class="list-icon"
+                  >music_note</mat-icon
+                >
+                {{ item }}
+              </mat-list-option>
+              }
+            </mat-selection-list>
+            <button
+              mat-raised-button
+              color="primary"
+              class="nivel-selection-button width-90 margin-auto margin-bottom-1rem"
+              (click)="activarResultado()"
+            >
+              Resultado
+            </button>
+            <!-- si mostrar resultado es llamado, muestra el resultado -->
+            @if (mostrarResultado) {
+            <p class="resultado">{{ resultado }}</p>
+            <!-- botón que oculta el resultado y resetea las selecciones -->
+            <div class="clearButton">
+              <button
+                mat-button
+                color="primary"
+                (click)="cerrarResultado(); selectList.selectedOptions.clear()"
+              >
+                OK
+              </button>
+            </div>
+            } } }
+          </div>
+          }
+        </div>
+      </mat-tab>
+      <!-- tab CONTENIDOS -->
+      <mat-tab>
+        <ng-template mat-tab-label> CONTENIDOS </ng-template>
+        <div class="temario-nivel-container">
+          <!-- selector de nivel contenidos -->
+          <div class="selector-nivel-container margin-top-1 margin-bottom-1rem">
+            <mat-form-field class="selector">
+              <mat-label class="text-white">SELECCIONA UN NIVEL</mat-label>
+              <!-- si cambia de nivel, se resetea la lista de elementos seleccionados -->
+              <mat-select
+                [(value)]="contenidoNivelSelected"
+                (openedChange)="resetItemList()"
+                panelClass="panel-red"
+              >
+                <mat-option value="principiantes">Principiantes</mat-option>
+                <mat-option value="intermedio">Intermedio</mat-option>
+                <mat-option value="avanzado">Avanzado</mat-option>
+                <mat-option value="kizomba">Kizomba</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          @if (contenidoNivelSelected !== "") {
+          <!-- check-list donde comprobar si saben lo necesario -->
+          <div
+            class="check-list-nivel border-gris"
+            [ngStyle]="{ 'background-color': backgroundColor }"
+          >
+            @for (nivel of niveles; track $index) { @if (contenidoNivelSelected
+            === nivel.nombre) {
+            <div class="nivel-header flex flex-column align-items-center">
+              <!-- asigna el número correspondiente al nivel selecionado -->
+              <div class="icono-container size-60 fondo-red position-top">
+                {{ nivel.number }}
+              </div>
+              <h2 class="text-large margin-top-1">
+                NIVEL <span class="text-red">{{ nivel.title }}</span>
+              </h2>
+              <h3 class="nivel-subtitle">
+                En el nivel {{ nivel.nombre }} trabajamos los siguientes
+                contenidos:
+              </h3>
+            </div>
+            <mat-selection-list #selectList>
+              <!-- recorre los items del listado de cada nivel -->
+              @for (item of nivel.listTemario; track item) {
+              <!-- cuando se selecciona un item, se envía a un array para comprobar luego el nivel -->
+              <mat-list-option selected="true" disabled="true">
+                <mat-icon matListItemIcon class="list-icon"
+                  >music_note</mat-icon
+                >
+                {{ item }}
+              </mat-list-option>
+              }
+            </mat-selection-list>
+            <button
+              mat-raised-button
+              color="primary"
+              class="margin-bottom-1rem"
+              disabled="true"
+            ></button>
+            } }
+          </div>
+          }
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</section>

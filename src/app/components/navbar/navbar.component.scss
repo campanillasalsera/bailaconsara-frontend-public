@@ -1,0 +1,89 @@
+.fixed {
+  position: fixed;
+  top: 0;
+}
+
+.z-index-2000 {
+  z-index: 2000;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+
+// Desplaza el logo hacia abajo sin que manteniendo todo el area cliqueable
+#logo {
+  min-width: 80%;
+  margin: auto;
+  transform: translateY(1.8rem);
+}
+
+/* le damos el ancho de su contenedor para hacerlo responsive */
+#logo img {
+  width: 100%;
+}
+
+.icon-red {
+  color: red;
+}
+
+// aumenta el tamaños de los botones icono
+.icon-button-mid-size {
+  width: 53px !important;
+  height: 53px !important;
+  --mdc-icon-button-state-layer-size: 53px;
+}
+.icon-mid-size {
+  width: 30px !important;
+  height: 30px !important;
+  font-size: 30px;
+}
+
+//boton deplegable al lado del nombre del usuario
+.userMenu-button {
+  width: 45px !important;
+  height: 45px !important;
+  min-width: 45px !important;
+}
+
+//capa que maneja los dialogs tipo menú-panel o snackBar
+//para que siempre esté por encima de todas las demás capas
+.cdk-overlay-container {
+  z-index: 2100;
+}
+
+/* Vista MINITablet*/
+@media screen and (min-width: 641px) and (max-width: 790px) {
+  /*Si la pantalla tiene enre 641 y 790 px*/
+
+  .bigScreen-show {
+    display: inline;
+  }
+}
+
+/* Vista Tablet*/
+@media screen and (min-width: 791px) and (max-width: 1007px) {
+  /*Si la pantalla tiene enre 791 y 1007 px*/
+
+  .bigScreen-show {
+    display: inline;
+  }
+}
+
+/***************** Vista PC 1008 ****************/
+@media screen and (min-width: 1080px) {
+  #botones-menu {
+    display: block;
+  }
+  .bigScreen-show {
+    display: inline;
+  }
+  #hamburguer-menu {
+    display: none;
+  }
+  #botones-menu button:hover {
+    color: red !important;
+  }
+  #botones-menu button:focus {
+    color: red !important;
+  }
+}

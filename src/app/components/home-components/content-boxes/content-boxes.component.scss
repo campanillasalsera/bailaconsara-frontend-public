@@ -1,0 +1,116 @@
+.contentBoxesInfo {
+  gap: 1rem;
+}
+
+.content-card-container {
+  width: 90%;
+  margin: auto;
+  border: 3px solid red;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.content-card {
+  width: 90%;
+  margin: auto;
+  background-color: transparent;
+}
+
+.subtitle {
+  width: 70%;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.text-margin {
+  margin: 2rem auto;
+}
+
+.margin-top {
+  margin-top: 2rem;
+}
+
+.logo-bienvenida {
+  width: 100%;
+}
+
+/* Vista Tablet*/
+@media screen and (min-width: 791px) and (max-width: 1007px) {
+  /*Si la pantalla tiene enre 791 y 1007 px*/
+
+  .hide-pc {
+    display: none;
+  }
+
+  .hide-tablet {
+    display: none;
+  }
+
+  .horarios-img {
+    width: 80%;
+    margin: auto;
+  }
+
+  .margin-smaller {
+    margin: 0 auto;
+  }
+
+  .margin-top {
+    margin: 1rem auto;
+  }
+}
+
+/***************** Vista PC 1008 ****************/
+@media screen and (min-width: 1008px) {
+  .contentBoxesInfo {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .content-card-container {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 50%;
+    max-width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    border: 3px solid red;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .content-card {
+    flex: 1;
+    min-height: 300px;
+    background-color: transparent;
+  }
+
+  //muestra la bienvenida del pc
+  .show-pc {
+    display: block;
+  }
+
+  .hide-pc {
+    display: none;
+  }
+
+  .horarios-img {
+    width: 80%;
+    margin: auto;
+  }
+
+  .margin-smaller {
+    margin: 0 auto;
+  }
+
+  .margin-top {
+    margin: 1rem auto;
+  }
+}

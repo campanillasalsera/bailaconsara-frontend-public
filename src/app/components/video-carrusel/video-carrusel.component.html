@@ -1,0 +1,64 @@
+<!-- componenete que muestra un carrusel de video-cards -->
+<!-- si hay videos en el array de videos -->
+@if (videos && videos.length > 0) {
+<div class="carrusel-container">
+  <!-- recorre el array de videos -->
+  @for (video of videos; track $index) {
+  <!-- #videoCard es el identificador para acceder a este div -->
+  <div
+    [ngClass]="{ 'div-activo': selectedIndex === $index }"
+    class="videoCard"
+    #videoCard
+  >
+    <mat-card class="content-card">
+      <img
+        [src]="video.imgSrc"
+        [alt]="video.imgAlt"
+        [ngClass]="{ 'imagen-activa': selectedIndex === $index }"
+        (click)="selectImagen($index)"
+      />
+    </mat-card>
+  </div>
+  }
+  <!-- que se muestren los indicadores es opcional por si en alguna página que use este 
+            componente no queremos que se muestren -->
+  @if (indicadores) {
+  <div class="carrusel-dot-container">
+    @for (dot of videos; track $index) {
+    <span
+      class="dot"
+      [ngClass]="{ activa: selectedIndex === $index }"
+      (click)="selectImagen($index)"
+    >
+    </span>
+    }
+  </div>
+  }
+  <!-- que se muestren los controles es opcional por si en alguna página que use este 
+            componente no queremos que se muestren -->
+  @if (controles) {
+  <div class="botones-carrusel-container">
+    <button
+      mat-mini-fab
+      aria-label="Botón anterior"
+      (click)="irAnterior()"
+      class="arrow-button"
+    >
+      <mat-icon class="text-large text-red bold"
+        >keyboard_double_arrow_left</mat-icon
+      >
+    </button>
+    <button
+      mat-mini-fab
+      aria-label="Botón anterior"
+      (click)="irSiguiente()"
+      class="arrow-button"
+    >
+      <mat-icon class="text-large text-red bold"
+        >keyboard_double_arrow_right</mat-icon
+      >
+    </button>
+  </div>
+  }
+</div>
+}

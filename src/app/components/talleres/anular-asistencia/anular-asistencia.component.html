@@ -1,0 +1,14 @@
+<!-- dialogo para confirmar antes de eliminar -->
+<div class="dialog">
+  <h2 mat-dialog-title>Anular asistencia a {{ tallerNombre }}</h2>
+  <mat-dialog-content>
+    ¿Seguro que quieres anular tu asistencia definitivamente? Si tenías pareja
+    asignada, el programa le buscará un nuevo acompañante.
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close cdkFocusInitial color="primary">
+      No
+    </button>
+    <button mat-button [mat-dialog-close]="true">Ok</button>
+  </mat-dialog-actions>
+</div>

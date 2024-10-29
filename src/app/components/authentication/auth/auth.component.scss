@@ -1,0 +1,248 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+//Ajusta el padding del componente para que no quede oculto por el nav
+.padding-top-adjust {
+  padding-top: 112px;
+}
+
+//cambia el color del radio button cuando está seleccionado
+.matRadioButtons .mat-mdc-radio-button.mat-accent {
+  --mdc-radio-selected-pressed-icon-color: #d50000;
+  --mdc-radio-selected-focus-icon-color: #d50000;
+  --mdc-radio-selected-hover-icon-color: #d50000;
+  --mdc-radio-selected-icon-color: #d50000;
+  --mat-radio-checked-ripple-color: #d50000;
+}
+
+//formulario de login
+.signInForm {
+  height: 100vh;
+  overflow: hidden;
+}
+
+//contenedor de los formularios
+.container {
+  width: 200%;
+  padding: 40px 30px;
+  height: 80%;
+  background-color: #000;
+}
+
+//desplaza el elemento horizontalmente un 53% hacia la izquierda de su posición original.
+.container .translate-active {
+  transform: translateX(-53%);
+}
+
+//maqueta el contenido del formulario
+.container .form-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Establece el ancho de los formularios de inicio de sesión y registro.
+// Calcula el ancho de cada formulario como la mitad del
+// Ambos formularios ocupan el mismo espacio horizontal, con un margen adicional para una separación
+// entre ellos.
+.form-content .login-form,
+.form-content .signup-form {
+  width: calc(100% / 2 - 25px);
+}
+
+//el botón de cerrar formulario que sea cuadrado redondeado
+.close-icon-button {
+  border-radius: 20% !important;
+}
+
+//tamaño del icono cerrar
+.close-icon {
+  width: 25px;
+  height: 25px;
+  font-size: 24px;
+}
+
+//tamaño de cada uno de los campos del formulario
+.form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.max-width-5rem {
+  max-width: 5rem;
+}
+.margin-top-2rem {
+  margin-top: 2rem;
+}
+.margin-bottom-2rem {
+  margin-bottom: 2rem;
+}
+
+//margenes del boton submit
+.margin-top-bottom {
+  margin: 3rem auto;
+}
+
+.margin-bottom {
+  margin-bottom: 3rem;
+}
+
+.max-height {
+  max-height: 80vh;
+}
+
+//Botones
+.mdc-fab--extended {
+  width: 100%;
+}
+
+/* Dispositivos a partir de 600px*/
+@media (min-width: 600px) {
+  //Aumenta el padding del componente para que no quede oculto por el nav
+  .padding-top-adjust {
+    padding-top: 128px;
+  }
+}
+
+/* Vista MINITablet*/
+@media screen and (min-width: 641px) and (max-width: 790px) {
+  //Disminuye el desplazamiento del contenedor para ajustarlo al tamaño de la pantalla
+  .container .translate-active {
+    transform: translateX(-51%);
+  }
+}
+
+/***************** Vista tablet y PC ****************/
+@media screen and (min-width: 791px) {
+  //se muestra el efecto libro, que estaba oculto para pantallas pequeñas
+  #cover {
+    display: block;
+  }
+
+  .signInForm {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: 1rem;
+  }
+
+  .container {
+    position: relative;
+    max-width: 850px;
+    width: 100%;
+    padding: 40px 30px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    perspective: 500px;
+    -webkit-perspective: 500px;
+    height: 70%;
+    background-color: #212121;
+  }
+
+  //imagen que hace de página del libro
+  .container .cover {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 50%;
+    z-index: 98;
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease;
+    transform-origin: 0 0;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+
+  //hace que el desplazamiento de la imágen tenga el efecto libro
+  .container .rotate-active {
+    transform: rotateY(-180deg);
+  }
+  .container .translate-active {
+    transform: translateX(0);
+  }
+
+  // Oculta la parte trasera del elemento cuando es rotado, evitando que
+  // se vea la "cara oculta" en las transformaciones 3D.
+  .container .cover .front,
+  .container .cover .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+  }
+  .cover .back {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+
+  // pseudo-elementos que permite insertar contenido antes y después del contenido real de un elemento
+  // en este caso una capa de color
+  .container .cover::before,
+  .container .cover::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #ff0303a1;
+    opacity: 0.5;
+    z-index: 12;
+  }
+
+  //para que la capa de color también rote con la imágen
+  .container .cover::after {
+    opacity: 0.3;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+
+  //Imágenes del libro
+  .container .cover img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 10;
+  }
+
+  // posición de los textos sobre las imágenes
+  .container .cover .text {
+    position: absolute;
+    z-index: 130;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4rem;
+  }
+
+  //formato de los textos sobre las imágnes
+  .cover .text .text-1,
+  .cover .text .text-2 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    line-height: normal;
+  }
+
+  // para que un texto sea más pequeño
+  .cover .text .text-2 {
+    font-size: 20px;
+  }
+
+  #register {
+    margin-top: 2rem;
+  }
+
+  // clase para poder ocultar elementos en pantallas grandes (botón cerrar formulario oculto)
+  .hide-pc {
+    display: none;
+  }
+}

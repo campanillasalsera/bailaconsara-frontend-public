@@ -1,0 +1,164 @@
+//Ajusta el padding del componente para que no quede oculto por el nav
+.padding-top-adjust {
+  padding-top: 112px;
+}
+.icono-container {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+.icons {
+  border-radius: 50%;
+  font-size: 65px;
+  width: 65px;
+  height: 65px;
+  align-self: center;
+}
+.text-x-large {
+  font-size: x-large !important;
+}
+.text-white {
+  color: #fff;
+}
+.titulo {
+  margin: 2rem auto;
+  width: 90%;
+}
+.content-card-container {
+  width: 90%;
+  margin: auto;
+  border: 3px solid red;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.content-card {
+  width: 90%;
+  margin: 2rem auto;
+  border: 3px solid red;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.fondo-red {
+  background-color: red;
+}
+.fondo-black {
+  background-color: black;
+}
+
+.flex-behaviour {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 33%;
+  min-height: 2rem;
+  padding: 0.2rem 0;
+}
+.flex-1 {
+  flex: 1;
+}
+.horario-header {
+  width: 90%;
+  margin: 1rem auto auto auto;
+}
+
+.tabla-foot-text {
+  width: 80%;
+  margin: 1rem auto;
+}
+// parte justo debajo del slant
+.join-to-slant {
+  padding-top: 5rem;
+  transform: skewY(7deg);
+  margin: -3rem auto;
+}
+
+//Preguntas Frecuentes
+.preguntas-frecuentes-container {
+  width: 90%;
+  margin: auto;
+}
+.preguntas-frecuentes {
+  --mat-expansion-container-background-color: black;
+}
+.margin-top-3 {
+  margin-top: 3rem;
+}
+
+.padding-bottom-1rem {
+  padding-bottom: 1rem;
+}
+
+//Ajusta el padding del componente para que no quede oculto por el nav
+@media (min-width: 600px) {
+  .padding-top-adjust {
+    padding-top: 128px;
+  }
+}
+
+/* Vista MINITablet*/
+@media screen and (min-width: 641px) and (max-width: 790px) {
+  .join-to-slant {
+    margin: -3rem auto;
+    padding-top: 6rem;
+  }
+  .content-card {
+    margin-bottom: 6rem;
+  }
+}
+
+/* Vista Tablet*/
+@media screen and (min-width: 791px) and (max-width: 1007px) {
+  .join-to-slant {
+    margin: -4rem auto;
+    padding-top: 7rem;
+  }
+  .content-card {
+    margin-bottom: 9rem;
+  }
+}
+
+/***************** Vista PC 1008 ****************/
+@media screen and (min-width: 1008px) {
+  .horarios-container {
+    width: 80%;
+    margin: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .content-card-container {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 50%;
+    max-width: 45%;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid red;
+    background-color: black;
+  }
+
+  .horarios-wrapper {
+    flex: 1;
+    min-height: 602px;
+  }
+  .niveles-container {
+    width: 70%;
+    margin: auto auto -6rem auto;
+  }
+  .join-to-slant {
+    padding-top: 12rem;
+    transform: skewY(7deg);
+    margin: auto;
+  }
+  .preguntas-main-container {
+    margin-top: -6rem;
+  }
+  .content-card {
+    margin-bottom: 12rem;
+  }
+  .preguntas-title {
+    margin-top: 8rem;
+  }
+}

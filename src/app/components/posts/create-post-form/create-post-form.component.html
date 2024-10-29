@@ -1,0 +1,256 @@
+<div class="padding-top-adjust">
+  <!-- mustra los accesos del usuario solo si este está logueado -->
+  @if (adminLogueado) {
+  <div class="main-container">
+    <!-- boton que cierra el formulario solo en pantallas pequeñas -->
+    <div class="boton-cerrar flex justify-end">
+      <button
+        mat-mini-fab
+        aria-label="Cerrar formulario"
+        (click)="handleCloseForm()"
+      >
+        <mat-icon>close_small</mat-icon>
+      </button>
+    </div>
+    <!-- icono y titulo -->
+    <div>
+      <div class="flex justify-center">
+        <div class="icono-container margin-top1rem">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Clases de bachata en Torremolinos"
+            fontIcon="post_add"
+            class="icons"
+          >
+          </mat-icon>
+        </div>
+      </div>
+      <h2 class="text-center">CREAR <span class="text-red">POST</span></h2>
+    </div>
+    @if (isLoading) {
+    <div class="flex justify-center margin-bottom-1rem">
+      <mat-spinner class="spinner"></mat-spinner>
+    </div>
+    }@else {
+    <!-- form -->
+    <div class="form-container width-90 margin-auto">
+      <form
+        [formGroup]="addPostForm"
+        (ngSubmit)="onSubmit()"
+        enctype="multipart/form-data"
+        class="post-form"
+      >
+        <!-- input frase clave -->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Frase clave</mat-label>
+            <input
+              matInput
+              placeholder="Frase clave"
+              [formControl]="addPostForm.controls.fraseclave"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <!-- input titulo -->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Título Post</mat-label>
+            <input
+              matInput
+              placeholder="Titulo que incluya la frase clave"
+              value=""
+              [formControl]="addPostForm.controls.title"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <!-- editor texto principal -->
+        <div class="editor-container">
+          <p class="editor-label">
+            Texto principal<span class="asterisco">*</span>
+          </p>
+          <editor
+            [init]="tinyMceSettings"
+            class="editor"
+            [formControl]="addPostForm.controls.textoinfo"
+          >
+          </editor>
+        </div>
+        <!-- editor programa 1 -->
+        <div class="editor-container">
+          <p class="editor-label">Programa 1</p>
+          <editor
+            [init]="tinyMceSettings"
+            class="editor"
+            [formControl]="addPostForm.controls.textoprograma1"
+          >
+          </editor>
+        </div>
+        <!-- editor programa 2 -->
+        <div class="editor-container">
+          <p class="editor-label">Programa 2</p>
+          <editor
+            [init]="tinyMceSettings"
+            class="editor"
+            [formControl]="addPostForm.controls.textoprograma2"
+          >
+          </editor>
+        </div>
+        <!-- editor Dress code -->
+        <div class="editor-container">
+          <p class="editor-label">Dress Code</p>
+          <editor
+            [init]="tinyMceSettings"
+            class="editor"
+            [formControl]="addPostForm.controls.textodresscode"
+          >
+          </editor>
+        </div>
+        <!-- editor artistas -->
+        <div class="editor-container">
+          <p class="editor-label">Artistas</p>
+          <editor
+            [init]="tinyMceSettings"
+            class="editor"
+            [formControl]="addPostForm.controls.textoartistas"
+          >
+          </editor>
+        </div>
+        <!-- editor Djs -->
+        <div class="editor-container">
+          <p class="editor-label">Djs</p>
+          <editor
+            [init]="tinyMceSettings"
+            class="editor"
+            [formControl]="addPostForm.controls.textodjs"
+          >
+          </editor>
+        </div>
+        <!-- editor pases -->
+        <div class="editor-container">
+          <p class="editor-label">Pases</p>
+          <editor
+            [init]="tinyMceSettings"
+            class="editor"
+            [formControl]="addPostForm.controls.textopases"
+          >
+          </editor>
+        </div>
+        <!-- selector de fecha -->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Fecha de creación del post</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              [formControl]="addPostForm.controls.created_at"
+            />
+            <mat-hint>DD/MM/AAAA</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+              class="padding-right-1"
+            ></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <!-- input Titulo SEO -->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Título SEO </mat-label>
+            <input
+              matInput
+              placeholder="Título SEO. Debe incluir la frase clave"
+              [formControl]="addPostForm.controls.tituloseo"
+            />
+          </mat-form-field>
+        </div>
+        <!-- input Slug -->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Slug</mat-label>
+            <input
+              matInput
+              placeholder="Slug. Debe incluir la frase clave"
+              [formControl]="addPostForm.controls.slug"
+            />
+          </mat-form-field>
+        </div>
+        <!-- editor Meta descripción -->
+        <div class="editor-container">
+          <p class="editor-label">
+            Meta Descripción<span class="asterisco">*</span>
+          </p>
+          <editor
+            [init]="tinyMceSettings"
+            class="editor"
+            [formControl]="addPostForm.controls.metadescripcion"
+          >
+          </editor>
+        </div>
+        <!-- input alt-imagen-portada -->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Alt Imagen Portada</mat-label>
+            <input
+              matInput
+              placeholder="Alt Imagen Portada. Debe incluir la frase clave"
+              [formControl]="addPostForm.controls.altportada"
+            />
+          </mat-form-field>
+        </div>
+        <!-- preview imagen portada -->
+        <div class="form-field">
+          <img mat-card-image [src]="previewImage" class="width-full" />
+        </div>
+        <!-- input selector de imagen -->
+        <div class="editor-container">
+          <p class="editor-label">Selecciona una imagen de portada</p>
+          <input
+            type="file"
+            name="imagenportada"
+            accept="image/*"
+            class="form-field input-file"
+            (change)="getFile($event)"
+          />
+        </div>
+        <!-- botón publicar -->
+        <button
+          mat-fab
+          extended
+          color="primary"
+          type="submit"
+          class="form-field margin-top-bottom"
+          [disabled]="addPostForm.invalid"
+        >
+          <mat-icon>publish</mat-icon>
+          Publicar
+        </button>
+      </form>
+    </div>
+    }
+  </div>
+  }@else {
+  <!-- mensaje para que el usuario se loguee si quiere acceder aquí -->
+  <div class="custom-card margin-bottom-1rem margin-top1rem">
+    <div
+      class="flex flex-column align-items-center justify-between width-90 margin-auto"
+    >
+      <div class="icono-container">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Clases de bachata en Torremolinos"
+          fontIcon="report"
+          class="icons"
+        >
+        </mat-icon>
+      </div>
+      <mat-card-subtitle class="margin-top1rem"
+        >Necesitas estar logueado para tener acceso a este
+        área</mat-card-subtitle
+      >
+    </div>
+  </div>
+  }
+</div>

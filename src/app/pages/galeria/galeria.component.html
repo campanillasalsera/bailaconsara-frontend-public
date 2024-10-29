@@ -1,0 +1,64 @@
+<!-- toma un padding top con el mismo tamaño que el navbar, para que no se quede escondido -->
+<div class="padding-top-adjust">
+  <!-- main container -->
+  <div class="flex flex-column">
+    <!-- icono principal -->
+    <div class="flex justify-center">
+      <div class="icono-container margin-top1rem">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Clases de bachata en Torremolinos"
+          fontIcon="perm_media"
+          class="icons"
+        >
+        </mat-icon>
+      </div>
+    </div>
+    <!-- titulo -->
+    <h2 class="title margin-top1rem">
+      GALERÍA DE <span class="text-red">FOTOS Y VÍDEOS</span>
+    </h2>
+    <!-- contenedor de los dos carruseles -->
+    <div class="carruseles-container flex flex-column">
+      <!-- carrusel de fotos -->
+      <div class="carrusel-mat-container">
+        <mat-card class="content-card">
+          <div
+            class="flex justify-center align-items-center gap-1 margin-top1rem"
+          >
+            <mat-icon>photo_camera</mat-icon>
+            <mat-card-title class="subtitle text-red">FOTOS</mat-card-title>
+          </div>
+          <!-- app carousel recibe las fotos del array -->
+          <app-carousel
+            [imagenes]="imagenesCarrusel"
+            [autoSlide]="false"
+            [controles]="true"
+            [indicadores]="true"
+          >
+          </app-carousel>
+        </mat-card>
+      </div>
+      <!-- carrusel de videos -->
+      <div class="carrusel-mat-container">
+        <mat-card class="content-card">
+          <div
+            class="flex justify-center align-items-center gap-1 margin-top1rem"
+          >
+            <mat-icon>videocam</mat-icon>
+            <mat-card-title class="subtitle text-red">VIDEOS</mat-card-title>
+          </div>
+          <!-- app video carrusel recibe los videos del array -->
+          <app-video-carrusel
+            [videos]="videosCarrusel"
+            [autoSlide]="true"
+            [slideInterval]="5000"
+            [controles]="true"
+            [indicadores]="true"
+          >
+          </app-video-carrusel>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

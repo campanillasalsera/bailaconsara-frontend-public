@@ -1,0 +1,119 @@
+<!----------------------------------------- PULSADORES ----------------------------------------->
+<section class="pulsadores">
+  <!-- pulsador salsa -->
+  <article class="pulsador">
+    <!-- imagen icono del pulsador -->
+    <mat-card class="pulsador-card">
+      <mat-card-header class="card-header">
+        <img
+          mat-card-image
+          src="assets/img/salsa.png"
+          alt="Clases de salsa en Torremolinos"
+        />
+      </mat-card-header>
+      <!-- Texto que va debajo del icono. Texto corto para ventanas pequeñas, texto
+            largo para ventanas grandes -->
+      <mat-card-content>
+        <mat-card-title class="text-red text-center">SALSA</mat-card-title>
+        <p class="textPulsadorTLF">Diversión y alegría</p>
+        <p class="textPulsadorPC hidden">
+          Baile muy divertido, especialmente adecuado para disfrutar en pareja,
+          donde el hombre guía a la mujer con las manos. Hay unos pasos básicos
+          que son necesarios conocer y saber ejecutar bien, para poder
+          evolucionar a buen ritmo y que fluya la comunicación entre los dos
+          bailadores. Además, este baile fomenta una conexión y entendimiento
+          únicos.
+        </p>
+      </mat-card-content>
+      <!-- botón que lleva al artículo completo -->
+      <mat-card-actions>
+        <div class="text-right">
+          <button
+            [routerLink]="['/singlePostTemplate/' + salsaPostId]"
+            mat-icon-button
+            aria-label="Botón leer más"
+          >
+            <mat-icon class="text-red">read_more</mat-icon>
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </article>
+  <!-- pulsador bachata -->
+  <article class="pulsador">
+    <mat-card class="pulsador-card">
+      <!-- imagen icono del pulsador -->
+      <mat-card-header>
+        <img
+          mat-card-image
+          src="assets/img/bachata.png"
+          alt="Clases de salsa en Torremolinos"
+        />
+      </mat-card-header>
+      <!-- Texto que va debajo del icono. Texto corto para ventanas pequeñas, texto
+            largo para ventanas grandes -->
+      <mat-card-content>
+        <mat-card-title class="text-red text-center">BACHATA</mat-card-title>
+        <p class="textPulsadorTLF">Sensualidad</p>
+        <p class="textPulsadorPC hidden">
+          Baile romántico originario de la República Dominicana, caracterizado
+          por el movimiento armonioso de las caderas. La mujer se deja guiar por
+          el hombre, que deberá indicarle con mucho mimo. Hay varios estilos: la
+          bachata dominicana, bachata fusión y bachata sensual, entre otros.
+          Este baile es especialmente conocido por su apasionada expresión y
+          conexión.
+        </p>
+      </mat-card-content>
+      <!-- botón que lleva al artículo completo -->
+      <mat-card-actions>
+        <div class="text-right">
+          <button
+            [routerLink]="['/singlePostTemplate/' + bachataPostId]"
+            mat-icon-button
+            aria-label="Botón leer más"
+          >
+            <mat-icon class="text-red">read_more</mat-icon>
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </article>
+  <!-- pulsador kizomba -->
+  <article class="pulsador">
+    <mat-card class="pulsador-card">
+      <!-- imagen icono del pulsador -->
+      <mat-card-header>
+        <img
+          mat-card-image
+          src="assets/img/kizomba.png"
+          alt="Clases de salsa en Torremolinos"
+        />
+      </mat-card-header>
+      <!-- Texto que va debajo del icono. Texto corto para ventanas pequeñas, texto
+            largo para ventanas grandes -->
+      <mat-card-content>
+        <mat-card-title class="text-red text-center">KIZOMBA</mat-card-title>
+        <p class="textPulsadorTLF">Abrazo musical</p>
+        <p class="textPulsadorPC hidden">
+          Baile de origen africano. Es muy sensual, logrando transmitir una
+          sensación de paz y relajación. Se baila en pareja en forma de abrazo,
+          creando una conexión inmensa entre la pareja y la música. Consta de
+          varios estilos: kizomba, kizomba fusión, semba, urban kizz, tarraxa o
+          tarraxinha, cada uno con sus características únicas y atractivas.
+        </p>
+      </mat-card-content>
+      <!-- botón que lleva al artículo completo -->
+      <mat-card-actions>
+        <div class="text-right">
+          <button
+            [routerLink]="['/singlePostTemplate/' + kizombaPostId]"
+            mat-icon-button
+            aria-label="Botón leer más"
+          >
+            <mat-icon class="text-red">read_more</mat-icon>
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </article>
+</section>

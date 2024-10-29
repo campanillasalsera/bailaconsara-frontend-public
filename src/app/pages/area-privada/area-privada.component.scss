@@ -1,0 +1,75 @@
+//Ajusta el padding del componente para que no quede oculto por el nav
+.padding-top-adjust {
+  padding-top: 112px;
+}
+.icono-container {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  background-color: red;
+}
+.icons {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+  align-self: center;
+}
+.title {
+  width: 90%;
+  margin: 2rem auto !important;
+  text-align: center;
+  font-size: x-large;
+}
+.custom-card {
+  width: 90%;
+  margin: auto;
+  padding: 1rem 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  border: 2px solid red;
+}
+.custom-buttom {
+  color: white;
+  text-decoration: none;
+}
+.margin-bottom-1rem {
+  margin-bottom: 1rem;
+}
+.margin-top1rem {
+  margin-top: 1rem;
+}
+
+//Ajusta el padding del componente para que no quede oculto por el nav
+@media (min-width: 600px) {
+  .padding-top-adjust {
+    padding-top: 128px;
+  }
+}
+
+/* Vista MINITablet*/
+@media screen and (min-width: 641px) and (max-width: 790px) {
+  .cards-container {
+    width: 80%;
+    margin: auto auto 2rem auto;
+  }
+}
+
+/* Vista Tablet*/
+@media screen and (min-width: 791px) and (max-width: 1007px) {
+  .cards-container {
+    width: 80%;
+    margin: auto auto 2rem auto;
+  }
+}
+
+/***************** Vista PC 1008 ****************/
+@media screen and (min-width: 1008px) {
+  .cards-container {
+    width: 70%;
+    margin: auto auto 2rem auto;
+  }
+}

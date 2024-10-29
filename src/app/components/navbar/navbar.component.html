@@ -1,0 +1,124 @@
+<div class="fixed z-index-2000 width-full navbar" #navbar>
+  <mat-toolbar color="basic">
+    <mat-toolbar-row>
+      <!-- botón whatsApp -->
+      <a href="https://wa.me/34649925439" target="_blank">
+        <button
+          mat-icon-button
+          class="icon-button-mid-size"
+          aria-label="boton whatsApp"
+        >
+          <img
+            src="assets/img/whatsapp_649-62-54-39.png"
+            alt="Clases de Salsa en Torremolinos"
+            title="Clases de Salsa en Torremolinos"
+          />
+        </button>
+      </a>
+      <!-- Logo Baila Con Sara -->
+      <a [routerLink]="['/home']">
+        <figure id="logo">
+          <img
+            src="assets/img/Logo-baila-con-sara.png"
+            alt="Clases de Salsa en Torremolinos"
+            title="Clases de Salsa en Torremolinos"
+          />
+        </figure>
+      </a>
+      <span class="spacer"></span>
+      <!-- Muestra un icono para loguearse y si logueado
+            muestra un saludo y un icono para area privada -->
+      @if (userLogged || adminLogged) {
+      <div class="text-smaller">
+        <span class="hidden bigScreen-show">Hola </span>{{ user.nombre }}
+      </div>
+      <button mat-button class="userMenu-button" [matMenuTriggerFor]="userMenu">
+        <mat-icon class="text-red">keyboard_arrow_down</mat-icon>
+      </button>
+      <mat-menu #userMenu="matMenu" class="userMenu">
+        <button
+          mat-menu-item
+          [matMenuTriggerFor]="areaPrivadaMenu"
+          [routerLink]="['/areaPrivada']"
+        >
+          Área privada
+        </button>
+        <button mat-menu-item (click)="handleLogout()">Cerrar sesión</button>
+      </mat-menu>
+      <mat-menu #areaPrivadaMenu="matMenu">
+        <button mat-menu-item [routerLink]="['/perfilUsuario']">
+          Perfil Usuario
+        </button>
+        <button mat-menu-item [routerLink]="['/talleres']">Actividades</button>
+      </mat-menu>
+      }@else {
+      <button
+        mat-icon-button
+        color="basic"
+        type="button"
+        aria-label="boton login"
+        (click)="handleLogin()"
+        class="icon-button-mid-size"
+      >
+        <mat-icon class="icon-red icon-mid-size">person</mat-icon>
+      </button>
+
+      }
+    </mat-toolbar-row>
+
+    <!-- segunda fila del navbar muestra icono telefono y el menu -->
+    <mat-toolbar-row>
+      <a href="tel://649925439">
+        <button
+          mat-icon-button
+          class="icon-button-mid-size"
+          aria-label="boton llamada"
+        >
+          <mat-icon class="icon-red icon-mid-size">call</mat-icon>
+        </button>
+      </a>
+      <span class="spacer"></span>
+
+      <!-- menud de botonera solo visible en pc -->
+      <div id="botones-menu" class="hidden">
+        <button mat-button [routerLink]="['/home']">INICIO</button>
+        <button mat-button [routerLink]="['/horarios']">HORARIOS</button>
+        <button mat-button [routerLink]="['/contacto']">CONTACTO</button>
+        <button mat-button [routerLink]="['/galeria']">GALERÍA</button>
+        <button mat-button [routerLink]="['/dondeBailar']">
+          BAILAR EN MÁLAGA
+        </button>
+        <button mat-button [routerLink]="['/eventos']">EVENTOS</button>
+        @if (userLogged || adminLogged) {
+        <button mat-button [routerLink]="['/talleres']">TALLERES</button>
+        <button mat-button [routerLink]="['/perfilUsuario']">PERFIL</button>
+        }
+      </div>
+
+      <!-- menu hamburguesa para pantallas pequeñas -->
+      <button
+        id="hamburguer-menu"
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="boton menu"
+        class="icon-button-mid-size"
+      >
+        <mat-icon class="icon-red icon-mid-size">menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" class="menu-primary">
+        <button mat-menu-item [routerLink]="['/home']">INICIO</button>
+        <button mat-menu-item [routerLink]="['/horarios']">HORARIOS</button>
+        <button mat-menu-item [routerLink]="['/contacto']">CONTACTO</button>
+        <button mat-menu-item [routerLink]="['/galeria']">GALERÍA</button>
+        <button mat-menu-item [routerLink]="['/dondeBailar']">
+          BAILAR EN MÁLAGA
+        </button>
+        <button mat-menu-item [routerLink]="['/eventos']">EVENTOS</button>
+        @if (userLogged || adminLogged) {
+        <button mat-menu-item [routerLink]="['/talleres']">TALLERES</button>
+        <button mat-menu-item [routerLink]="['/perfilUsuario']">PERFIL</button>
+        }
+      </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>

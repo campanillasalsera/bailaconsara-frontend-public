@@ -1,0 +1,143 @@
+//Ajusta el padding del componente para que no quede oculto por el nav
+.padding-top-adjust {
+  padding-top: 112px;
+}
+.imgBackground {
+  background-image: url("https://bailaconsara.com/assets/img/sala-baile.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 2rem;
+}
+.padding-bottom-1rem {
+  padding-bottom: 1rem;
+}
+.icono-container {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  background-color: red;
+}
+.icons {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+  align-self: center;
+}
+.title {
+  width: 90%;
+  margin: 2rem auto !important;
+  text-align: center;
+  font-size: x-large;
+  font-weight: bolder !important;
+}
+.border-red {
+  border: 2px solid red;
+}
+.fondo-semitransparente {
+  background-color: rgb(0, 0, 0, 0.6);
+}
+.subtitle {
+  width: 90%;
+  margin: 1rem auto;
+  text-align: center;
+  font-size: medium;
+}
+.selector-dia-container {
+  width: 100%;
+  --mdc-filled-text-field-container-color: white;
+  --mat-select-enabled-trigger-text-color: black;
+  --mdc-filled-text-field-focus-active-indicator-color: red;
+  --mdc-filled-text-field-active-indicator-color: red;
+  --mdc-filled-text-field-hover-active-indicator-color: red;
+  --mat-form-field-focus-state-layer-opacity: 0;
+  --mat-select-enabled-arrow-color: red;
+  --mat-select-focused-arrow-color: red;
+}
+.selector {
+  width: 100%;
+  margin: 1rem auto;
+}
+.panel-opciones.mat-mdc-select-panel {
+  background: #000000;
+  max-height: 350px;
+}
+.matOption {
+  --mat-minimal-pseudo-checkbox-selected-checkmark-color: #fa4141;
+  --mat-option-selected-state-label-text-color: #fa4141;
+}
+.panel-listado {
+  width: 95%;
+  margin: -2rem auto auto auto;
+}
+.titulo-listado {
+  width: 95%;
+  margin: auto !important;
+}
+.sala-baile {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 95%;
+  margin: 0.5rem auto;
+  border-radius: 5px;
+  border: 3px solid red;
+  color: white;
+  padding: 0.5rem;
+}
+.iconos-edit-delete {
+  justify-content: space-between;
+  margin: -1rem;
+  color: red;
+}
+//posiciona el botón en un lugar fijo
+.fixed-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem auto;
+}
+
+//centra el boton
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+}
+
+//Ajusta el padding del componente para que no quede oculto por el nav
+@media (min-width: 600px) {
+  .padding-top-adjust {
+    padding-top: 128px;
+  }
+}
+
+/* Vista MINITablet*/
+@media screen and (min-width: 641px) and (max-width: 790px) {
+  .selector-dia-container {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+/* Vista Tablet*/
+@media screen and (min-width: 791px) and (max-width: 1007px) {
+  .selector-dia-container {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+/***************** Vista PC 1008 ****************/
+@media screen and (min-width: 1008px) {
+  .salas-container {
+    width: 70%;
+  }
+  .selector-dia-container {
+    width: 90%;
+    margin: auto;
+  }
+}

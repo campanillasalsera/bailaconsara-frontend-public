@@ -1,0 +1,97 @@
+//Ajusta el padding del componente para que no quede oculto por el nav
+.padding-top-adjust {
+  padding-top: 112px;
+}
+//contenedor del formulario
+.form-container {
+  background-color: #000000;
+  border-radius: 0.5rem;
+  border: 4px solid red;
+  margin-bottom: 2rem;
+}
+//tamaño de cada uno de los campos del formulario
+.form-field {
+  --mdc-filled-text-field-disabled-container-color: #212121;
+  --mdc-filled-text-field-container-color: #212121;
+  --mdc-filled-text-field-disabled-container-color: #21212100;
+  --mdc-filled-text-field-disabled-input-text-color: #ffffff;
+  --mdc-filled-text-field-disabled-label-text-color: #9e9e9e;
+}
+.icono-container {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  background-color: red;
+  margin: -1rem auto 1rem auto;
+}
+.icons {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+  align-self: center;
+}
+.boton-cerrar {
+  margin: 0.5rem 0.5rem -2rem auto;
+}
+.table-filter-container {
+  padding-top: 1rem;
+  max-height: 75vh;
+  width: 90%;
+  overflow-x: auto;
+  margin: auto auto 1rem auto;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  border: 4px solid red;
+}
+.tabla-container {
+  width: 90%;
+  margin: auto auto 1rem auto;
+  overflow: auto;
+  max-height: 70vh;
+}
+.tabla {
+  --mat-table-background-color: #212121;
+}
+//margenes del boton submit
+.margin-top-bottom {
+  margin: 1rem auto;
+}
+.margin-auto {
+  margin: auto !important;
+}
+
+.margin-botones {
+  margin: 0.3rem auto !important;
+}
+.margin-left-1rem {
+  margin-left: 1rem;
+}
+.margin-top--1rem {
+  margin-top: -1rem;
+}
+.margin-top1rem {
+  margin-top: 1rem;
+}
+.margin-bottom-2rem {
+  margin-bottom: 2rem;
+}
+
+//Ajusta el padding del componente para que no quede oculto por el nav
+@media (min-width: 600px) {
+  .padding-top-adjust {
+    padding-top: 128px;
+  }
+}
+@media (min-width: 1008px) {
+  .main-container {
+    width: 60%;
+    margin: 1rem auto auto auto;
+  }
+}

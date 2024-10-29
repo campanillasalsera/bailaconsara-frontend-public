@@ -1,0 +1,414 @@
+<!-- toma un padding top con el mismo tamaño que el navbar, para que no se quede escondido -->
+<div class="padding-top-adjust margin-bottom-1rem">
+  @if (userLogueado) {
+  <!-- contenedor principal -->
+  <div class="main-container margin-top1rem">
+    <div class="form-container width-90 margin-auto">
+      <!-- titulo y boton cerrar -->
+      <div>
+        <!-- boton que cierra el formulario solo en pantallas pequeñas -->
+        <div class="boton-cerrar flex justify-end">
+          <button
+            mat-mini-fab
+            aria-label="Cerrar formulario"
+            (click)="handleCloseForm()"
+          >
+            <mat-icon>close_small</mat-icon>
+          </button>
+        </div>
+        <div class="flex justify-center">
+          <div class="icono-container margin-top1rem">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Clases de bachata en Torremolinos"
+              fontIcon="bookmark_check"
+              class="icons"
+            >
+            </mat-icon>
+          </div>
+        </div>
+        <h2 class="text-center margin-bottom-2rem">
+          <span class="text-red">{{ taller.nombre.toUpperCase() }}</span>
+        </h2>
+      </div>
+      <!-- mientras está esperando respuesta del back muestra un spinner -->
+      @if (isLoading) {
+      <div class="flex justify-center margin-bottom-1rem">
+        <mat-spinner class="spinner"></mat-spinner>
+      </div>
+      }@else {
+      <!-- Formulario actualización -->
+      <form (ngSubmit)="handleUpdateTaller()" class="flex flex-column">
+        <!-- campos del formulario -->
+        <div class="width-90 margin-auto">
+          @if (adminLogueado) {
+          <!-- nombre del evento -->
+          <mat-form-field class="form-field width-full">
+            <mat-label>Nombre del taller</mat-label>
+            <input
+              matInput
+              placeholder="Nombre del taller"
+              value="taller.nombre"
+              name="nombre"
+              [(ngModel)]="taller.nombre"
+              [disabled]="isNotEditable"
+            />
+          </mat-form-field>
+          }
+
+          <!-- modalidad -->
+          <mat-form-field class="form-field width-full">
+            <mat-label>Modalidad de baile</mat-label>
+            <input
+              matInput
+              placeholder="Modalidad de baile"
+              value="taller.modalidad"
+              name="modalidad"
+              [(ngModel)]="taller.modalidad"
+              [disabled]="isNotEditable"
+            />
+          </mat-form-field>
+          <!-- profesores -->
+          <mat-form-field class="form-field width-full">
+            <mat-label>Profesores</mat-label>
+            <input
+              matInput
+              placeholder="Profesores"
+              value="taller.profesores"
+              name="profesores"
+              [(ngModel)]="taller.profesores"
+              [disabled]="isNotEditable"
+            />
+          </mat-form-field>
+          <!-- fecha -->
+          <mat-form-field class="form-field width-full">
+            <mat-label>Fecha del evento</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              value="taller.fecha"
+              name="fecha"
+              [(ngModel)]="taller.fecha"
+              [disabled]="isNotEditable"
+            />
+            @if (adminLogueado) {
+            <mat-hint>DD/MM/AAAA</mat-hint>
+            }
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+              class="padding-right-1"
+            >
+            </mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
+          <!-- hora -->
+          <mat-form-field class="form-field width-full">
+            <mat-label>Hora</mat-label>
+            <input
+              matInput
+              placeholder="Hora"
+              value="taller.hora"
+              name="hora"
+              [(ngModel)]="taller.hora"
+              [disabled]="isNotEditable"
+            />
+            @if (adminLogueado) {
+            <mat-hint>hh:mm</mat-hint>
+            }
+          </mat-form-field>
+          <!-- lugar -->
+          <mat-form-field class="form-field width-full">
+            <mat-label>Lugar</mat-label>
+            <input
+              matInput
+              placeholder="Lugar"
+              value="taller.lugar"
+              name="lugar"
+              [(ngModel)]="taller.lugar"
+              [disabled]="isNotEditable"
+            />
+          </mat-form-field>
+        </div>
+        <!-- botón para actualizar solo visible si admin logueado -->
+        @if (adminLogueado) {
+        <button
+          mat-fab
+          extended
+          color="primary"
+          type="submit"
+          class="width-90 margin-botones"
+          [disabled]="isNotEditable"
+        >
+          <mat-icon>publish</mat-icon>
+          Aplicar
+        </button>
+        }
+      </form>
+      <!-- botones que solo se muestran al administrador -->
+      @if(adminLogueado){
+      <!-- boton listar usuarios -->
+      <div class="width-90 margin-botones">
+        <button
+          mat-raised-button
+          color="primary"
+          class="width-full"
+          (click)="handleListUsersTaller(taller.id)"
+          aria-label="Botón editar post"
+        >
+          <mat-icon>list_alt</mat-icon>
+          Lsita de asistentes
+        </button>
+      </div>
+      @if (showTabla) {
+      <!-- tabla con filtro -->
+      <div class="table-filter-container">
+        <h2 class="text-center">
+          LISTA DE <span class="text-red">PARTICIPANTES</span>
+        </h2>
+        <!-- filtro input -->
+        <mat-form-field class="form-field width-90 margin-auto filtro">
+          <mat-label class="text-white">Filtro</mat-label>
+          <input
+            matInput
+            (keyup)="applyFilter($event)"
+            placeholder="Filtro"
+            #inputFiltroTaller
+          />
+        </mat-form-field>
+        <!-- tabla -->
+        <div class="tabla-container">
+          <table mat-table [dataSource]="dataSource" class="tabla">
+            <!-- Columna nombre -->
+            <ng-container matColumnDef="nombre">
+              <th mat-header-cell *matHeaderCellDef class="tabla-header">
+                Nombre
+              </th>
+              <td mat-cell *matCellDef="let usuario">
+                {{ usuario.nombre }}
+              </td>
+            </ng-container>
+
+            <!-- Columna apellidos -->
+            <ng-container matColumnDef="apellidos">
+              <th mat-header-cell *matHeaderCellDef class="tabla-header">
+                Apellidos
+              </th>
+              <td mat-cell *matCellDef="let usuario">
+                {{ usuario.apellidos }}
+              </td>
+            </ng-container>
+
+            <!-- Columna Estado de emparejamiento -->
+            <ng-container matColumnDef="user_taller_estado">
+              <th mat-header-cell *matHeaderCellDef class="tabla-header">
+                Estado
+              </th>
+              <td mat-cell *matCellDef="let usuario">
+                {{ usuario.user_taller_estado }}
+              </td>
+            </ng-container>
+
+            <!-- Columna Pareja adjudicada -->
+            <ng-container matColumnDef="userPartner">
+              <th mat-header-cell *matHeaderCellDef class="tabla-header">
+                Pareja Adjudicada
+              </th>
+              <td mat-cell *matCellDef="let usuario">
+                {{ usuario.userPartner }}
+              </td>
+            </ng-container>
+
+            <!-- Columna telefono -->
+            <ng-container matColumnDef="telefono">
+              <th mat-header-cell *matHeaderCellDef class="tabla-header">
+                Telefono
+              </th>
+              <td mat-cell *matCellDef="let usuario">
+                {{ usuario.telefono }}
+              </td>
+            </ng-container>
+            <!-- Columna email -->
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef class="tabla-header">
+                Email
+              </th>
+              <td mat-cell *matCellDef="let usuario">
+                {{ usuario.email }}
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+            <!-- se muestra cuando no hay coincidencias con el filtro -->
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell text-white" colspan="4">
+                No hay resultados para tu consulta "{{
+                  inputFiltroTaller.value
+                }}"
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      }
+      <!-- botón editar taller -->
+      <div class="width-90 margin-botones">
+        <button
+          mat-raised-button
+          color="primary"
+          class="width-full"
+          (click)="isNotEditable = !isNotEditable"
+          aria-label="Botón eliminar post"
+        >
+          <mat-icon>edit</mat-icon>
+          Editar taller
+        </button>
+      </div>
+      <!-- boton eliminar taller. Envia email a los usuarios con la modificación -->
+      <div class="width-90 margin-botones">
+        <button
+          mat-stroked-button
+          color="primary"
+          class="width-full"
+          (click)="handleDeleteTaller(taller.id)"
+          aria-label="Botón eliminar post"
+        >
+          <mat-icon>delete</mat-icon>
+          Eliminar taller y notificar
+        </button>
+      </div>
+      }
+      <!-- botones de acciones con los talleres para todos los usuarios -->
+      <div class="margin-bottom-1rem">
+        <!-- si el usuario no está apuntado puede reserver solo o con pareja -->
+        @if (!taller.isSignedUp) {
+        <!-- reservar individual -->
+        <div class="width-90 margin-botones">
+          <button
+            mat-raised-button
+            color="primary"
+            class="width-full"
+            (click)="handleSignInTaller(taller.id)"
+            aria-label="Botón editar post"
+          >
+            <mat-icon>person_add</mat-icon>
+            Reservar individual
+          </button>
+        </div>
+        <!-- reservar con Pareja -->
+        <div class="width-90 margin-botones">
+          <button
+            mat-raised-button
+            color="primary"
+            class="width-full"
+            (click)="showInputPareja = !showInputPareja"
+            aria-label="Botón editar post"
+          >
+            <mat-icon>group_add</mat-icon>
+            Reservar con pareja
+          </button>
+          @if (showInputPareja) {
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Email de acompañante</mat-label>
+            <input
+              matInput
+              placeholder="Email de acompañante"
+              #inputEmailPareja=""
+            />
+            <button
+              matSuffix
+              mat-icon-button
+              (click)="
+                handleSignInCouple(taller.id, userId, inputEmailPareja.value)
+              "
+            >
+              <mat-icon class="text-red">send</mat-icon>
+            </button>
+          </mat-form-field>
+          }
+        </div>
+        <!-- si ya esgtá inscrito puede añadir pareja (si no tiene) y anular reserva -->
+        }@else{
+        <h3 class="text-center">
+          Ya estás inscrito en este evento
+          <span class="text-red">
+            <mat-icon>check</mat-icon>
+          </span>
+        </h3>
+        @if (taller.hasPartner) {
+        <h3 class="text-center">
+          Ya tienes pareja
+          <span class="text-red">
+            <mat-icon>check</mat-icon>
+          </span>
+        </h3>
+        <!-- botón añadir pareja, disponible si el usuario está inscrito pero sin pareja -->
+        }@else {
+        <div class="width-90 margin-botones">
+          <button
+            mat-raised-button
+            color="primary"
+            class="width-full"
+            (click)="showInput = !showInput"
+            aria-label="Botón editar post"
+          >
+            <mat-icon>exposure_plus_1</mat-icon>
+            Añadir acompañante
+          </button>
+          @if (showInput) {
+          <mat-form-field class="form-field width-full">
+            <mat-label class="text-white">Email de acompañante</mat-label>
+            <input matInput placeholder="Email de acompañante" #inputEmail />
+            <button
+              matSuffix
+              mat-icon-button
+              (click)="handleAddPartner(taller.id, inputEmail.value)"
+            >
+              <mat-icon class="text-red">send</mat-icon>
+            </button>
+          </mat-form-field>
+          }
+        </div>
+        }
+        <div class="width-90 margin-botones">
+          <button
+            mat-raised-button
+            color="primary"
+            class="width-full"
+            (click)="handleSignOutTaller(taller.id, userId)"
+            aria-label="Botón editar post"
+          >
+            <mat-icon>person_remove</mat-icon>
+            Anular reserva
+          </button>
+        </div>
+        }
+      </div>
+      }
+    </div>
+  </div>
+  }@else {
+  <!-- mensaje para que el usuario se loguee si quiere acceder aquí -->
+  <div class="custom-card margin-bottom-1rem margin-top1rem">
+    <div
+      class="flex flex-column align-items-center justify-between width-90 margin-auto"
+    >
+      <div class="icono-container">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Clases de bachata en Torremolinos"
+          fontIcon="report"
+          class="icons"
+        >
+        </mat-icon>
+      </div>
+      <mat-card-subtitle class="margin-top1rem"
+        >Necesitas estar logueado para tener acceso a este
+        área</mat-card-subtitle
+      >
+    </div>
+  </div>
+  }
+</div>

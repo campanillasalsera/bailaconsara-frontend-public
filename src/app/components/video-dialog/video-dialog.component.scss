@@ -1,0 +1,45 @@
+.img-container {
+  position: fixed;
+  top: 130px;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0);
+  height: 80vh;
+  overflow: auto;
+}
+
+.boton-cerrar-container {
+  margin: 1rem;
+}
+.close-icon {
+  width: 25px;
+  height: 25px;
+  font-size: 25px;
+}
+
+.videoCard {
+  margin: 0 auto;
+}
+
+/* Vista Pc pequeño*/
+@media screen and (min-width: 1008px) and (max-width: 1200px) {
+  .img-container {
+    width: 80%;
+    left: 10%;
+  }
+}
+/* Vista Pc mediano*/
+@media screen and (min-width: 1201px) and (max-width: 1400px) {
+  .img-container {
+    width: 70%;
+    left: 15%;
+  }
+}
+
+/***************** Vista PC grande ****************/
+@media screen and (min-width: 1401px) {
+  .img-container {
+    width: 60%;
+    left: 20%;
+  }
+}

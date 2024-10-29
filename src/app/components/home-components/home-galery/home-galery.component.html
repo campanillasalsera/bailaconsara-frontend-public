@@ -1,0 +1,43 @@
+<section class="flex wrap galery-container">
+  <!-- carrusel -->
+  <div class="carrusel-mat-container">
+    <mat-card class="content-card">
+      <mat-card-header class="justify-center">
+        <mat-card-title class="subtitle"
+          >NUESTRAS <span class="text-red">CLASES</span></mat-card-title
+        >
+      </mat-card-header>
+      <!-- usa el componente carousel y le pasa las variables con el array de imagenes, 
+            true a autoslide con intervalo de 3500 y que muestre controles e indicadores  -->
+      <app-carousel
+        [imagenes]="imagenesCarrusel"
+        [autoSlide]="true"
+        [slideInterval]="3500"
+        [controles]="true"
+        [indicadores]="true"
+      >
+      </app-carousel>
+    </mat-card>
+  </div>
+
+  <!-- Horarios -->
+  <div class="carrusel-mat-container">
+    <mat-card class="content-card">
+      <mat-card-header class="justify-center">
+        <mat-card-title class="subtitle"
+          >NUESTROS <span class="text-red">HORARIOS</span></mat-card-title
+        >
+      </mat-card-header>
+      <!-- usa el componente carousel y le pasa las variables con el array con la imagen, 
+            false a autoslide y que no muestre controles e indicadores  -->
+      <app-carousel
+        [imagenes]="imagenesHorarios"
+        [autoSlide]="false"
+        [slideInterval]="0"
+        [controles]="false"
+        [indicadores]="false"
+      >
+      </app-carousel>
+    </mat-card>
+  </div>
+</section>

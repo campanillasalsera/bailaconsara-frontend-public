@@ -1,0 +1,73 @@
+<!-- container principal que recibe la altura para que quede debajo del navbar -->
+<div class="padding-top-adjust">
+  <!-- si un usuario o administrador está logueado muestra tarjetas con acceso a diferentes páginas -->
+  @if (userLogueado || adminLogueado) {
+  <!-- contenedor de contenedores -->
+  <div>
+    <!-- contenedor del incono del titulo -->
+    <div class="flex justify-center">
+      <div class="icono-container margin-top1rem">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Clases de bachata en Torremolinos"
+          fontIcon="admin_panel_settings"
+          class="icons"
+        >
+        </mat-icon>
+      </div>
+    </div>
+    <!-- título -->
+    <h2 class="title">AREA <span class="text-red">PRIVADA</span></h2>
+    <!-- contenedor de las tarjetas con los accesos -->
+    <div class="cards-container flex flex-column gap-1 margin-bottom-1rem">
+      <!-- perfil usuario -->
+      <a class="pointer custom-buttom" [routerLink]="['/perfilUsuario']">
+        <div class="custom-card">
+          <div
+            class="flex align-items-center justify-between width-90 margin-auto"
+          >
+            <div class="icono-container">
+              <mat-icon
+                aria-hidden="false"
+                aria-label="Clases de bachata en Torremolinos"
+                fontIcon="manage_accounts"
+                class="icons"
+              >
+              </mat-icon>
+            </div>
+            <mat-card-title>Perfil de usuario</mat-card-title>
+          </div>
+        </div>
+      </a>
+      <!-- talleres -->
+      <a class="pointer custom-buttom" [routerLink]="['/talleres']">
+        <div class="custom-card">
+          <div
+            class="flex align-items-center justify-between width-90 margin-auto"
+          >
+            <div class="icono-container">
+              <mat-icon
+                aria-hidden="false"
+                aria-label="Clases de bachata en Torremolinos"
+                fontIcon="group_add"
+                class="icons"
+              >
+              </mat-icon>
+            </div>
+            <mat-card-title>Actividades</mat-card-title>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <!--si se accede sin estar logueado, muestra un mensaje para que se loguee -->
+  }@else {
+  <div
+    class="flex flex-column align-items-center justify-between width-90 margin-auto"
+  >
+    <mat-card-subtitle class="margin-top1rem"
+      >Necesitas estar logueado para tener acceso a este área</mat-card-subtitle
+    >
+  </div>
+  }
+</div>

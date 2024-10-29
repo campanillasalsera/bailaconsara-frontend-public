@@ -1,0 +1,172 @@
+<div class="footerContainer flex flex-row flex-wrap gap-1 width-full">
+  <!-- box clases innova -->
+  <div class="width-full box-map">
+    <mat-card appearance="outlined" class="style-box">
+      <mat-card-header class="justify-center">
+        <mat-card-title class="text-center max-width-pc"
+          >CLASES EN INNOVA</mat-card-title
+        >
+      </mat-card-header>
+      <mat-card-content>
+        <a href="https://goo.gl/maps/QSf7APzPPpuMo78PA" target="_blank">
+          <img
+            mat-card-image
+            src="assets/img/innova-Arroyo-de-la-Miel.jpg"
+            alt="Clases de Salsa Benalmádena"
+            title="Clases de Salsa Benalmádena"
+            class="width-full"
+          />
+        </a>
+        <a
+          href="https://goo.gl/maps/QSf7APzPPpuMo78PA"
+          target="_blank"
+          class="decoration-none text-white"
+        >
+          <address>
+            Av. Federico Gª Lorca, esquina con Camino del Prado (Frente a la
+            biblioteca), Benalmádena.
+          </address>
+        </a>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!-- box clases atrevete -->
+  <div class="width-full box-map">
+    <mat-card appearance="outlined" class="style-box">
+      <mat-card-header class="justify-center">
+        <mat-card-title class="text-center max-width-pc"
+          >CLASES EN ATRÉVETE</mat-card-title
+        >
+      </mat-card-header>
+      <mat-card-content>
+        <a href="https://goo.gl/maps/qb5ZxrZtc598gR15A" target="_blank">
+          <img
+            mat-card-image
+            src="assets/img/atrevete-Torremolinos.jpg"
+            alt="Clases de Salsa Torremolinos"
+            title="Clases de Salsa Torremolinos"
+            class="width-full"
+          />
+        </a>
+        <a
+          href="https://goo.gl/maps/qb5ZxrZtc598gR15A"
+          target="_blank"
+          class="decoration-none text-white"
+        >
+          <address>
+            Av. Salvador Allende, 10 , Torremolinos. Entrada por Pasaje Decano
+            Ferrer y Márquez 19.
+          </address>
+        </a>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!-- box contacto -->
+  <div class="width-full box-contact">
+    <mat-card appearance="outlined" class="align-items-center style-box">
+      <mat-card-header class="justify-center">
+        <mat-card-title>CONTACTO</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="card-content-pc">
+        <div>
+          <a href="tel://649925439">
+            <button mat-button color="basic">
+              <mat-icon color="primary">phone_in_talk</mat-icon>
+              (+34) 649 92 54 39
+            </button>
+          </a>
+        </div>
+        <!-- botón abrir politica privacidad y cookies -->
+        <button mat-button color="basic" (click)="openDialogCookiesPolicy()">
+          <mat-icon color="primary">shield_lock</mat-icon>
+          Política de Privacidad y Cookies
+        </button>
+      </mat-card-content>
+      <mat-card-actions>
+        <a href="https://wa.me/34649925439">
+          <button mat-button>
+            <img
+              src="assets/img/whatsapp-icon.png"
+              alt="Whatsapp Clases de Salsa Torremolinos"
+              title="Whatsapp Clases de Salsa Torremolinos"
+            />
+          </button>
+        </a>
+        <a href="mailto:bailaconsara@gmail.com" target="_blank">
+          <button mat-button>
+            <img
+              src="assets/img/Email.png"
+              alt="Email Clases de Salsa Torremolinos"
+              title="Email Clases de Salsa Torremolinos"
+            />
+          </button>
+        </a>
+        <a href="https://www.facebook.com/BailaConSara/" target="_blank">
+          <button mat-button>
+            <img
+              src="assets/img/facebook-icon.png"
+              alt="Facebook Clases de Salsa Torremolinos"
+              title="Facebook Clases de Salsa Torremolinos"
+            />
+          </button>
+        </a>
+        <a href="https://www.instagram.com/bailaconsara/" target="_blank">
+          <button mat-button>
+            <img
+              src="assets/img/instagram-icon.png"
+              alt="Instagram Clases de Salsa Torremolinos"
+              title="Instagram Clases de Salsa Torremolinos"
+            />
+          </button>
+        </a>
+        <a href="https://t.me/+34649925439" target="_blank">
+          <button mat-button>
+            <img
+              src="assets/img/telegram-icon.png"
+              alt="Telegram Clases de Salsa Torremolinos"
+              title="Telegram Clases de Salsa Torremolinos"
+            />
+          </button>
+        </a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <!-- box menu -->
+  <div class="width-full box-menu">
+    <mat-card appearance="outlined" class="align-items-strech style-box">
+      <mat-card-header class="justify-center">
+        <mat-card-title>MENÚ</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>
+            <button mat-button [routerLink]="['/home']">INICIO</button>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <button mat-button [routerLink]="['/horarios']">HORARIOS</button>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <button mat-button [routerLink]="['/contacto']">CONTACTO</button>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <button mat-button [routerLink]="['/galeria']">GALERÍA</button>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <button mat-button [routerLink]="['/dondeBailar']">
+              BAILAR EN MÁLAGA
+            </button>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <button mat-button [routerLink]="['/eventos']">EVENTOS</button>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

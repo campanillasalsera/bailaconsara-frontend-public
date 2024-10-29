@@ -1,0 +1,92 @@
+.carrusel-container {
+  width: 95%;
+  margin: 1.5rem auto auto auto;
+}
+
+.carrusel-container img {
+  border-radius: 5px;
+}
+
+.content-card {
+  width: 95%;
+  margin: auto;
+  background-color: transparent;
+}
+
+.content-card img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+//Oculta los videos
+.carrusel-container .videoCard {
+  display: none;
+}
+
+//muestra el video que tiene la clase div-activo
+.carrusel-container .videoCard.div-activo {
+  display: block;
+  width: 100%;
+}
+
+/* indicadores-dot */
+.carrusel-dot-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 1rem auto;
+}
+
+.dot {
+  cursor: pointer;
+  height: 8px;
+  width: 8px;
+  margin: 2px 5px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  transition: opacity 1s ease;
+  opacity: 0.6;
+}
+
+.activa,
+.dot:hover {
+  opacity: 1;
+}
+
+/* botones a izquierda y derecha */
+.botones-carrusel-container {
+  position: absolute;
+  bottom: 45%;
+  left: 7.2%;
+  display: flex;
+  justify-content: space-between;
+  width: 86%;
+}
+
+.arrow-button {
+  background-color: #ffffff;
+}
+.margin-top-1rem {
+  margin-top: 1rem;
+}
+
+/* Vista Pc pequeño*/
+@media screen and (min-width: 1008px) and (max-width: 1200px) {
+  .botones-carrusel-container {
+    top: 200px;
+  }
+}
+/* Vista Pc mediano*/
+@media screen and (min-width: 1201px) and (max-width: 1400px) {
+  .botones-carrusel-container {
+    top: 220px;
+  }
+}
+
+/***************** Vista PC grande ****************/
+@media screen and (min-width: 1401px) {
+  .botones-carrusel-container {
+    top: 250px;
+  }
+}

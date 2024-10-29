@@ -1,0 +1,100 @@
+<div class="padding-top-adjust">
+  @if (isLoading) {
+  <div class="flex justify-center margin-bottom-1rem">
+    <mat-spinner class="spinner"></mat-spinner>
+  </div>
+  }@else {
+  <!-- container de botones de acción -->
+  <div class="actions-container">
+    <mat-card-actions class="flex justify-end">
+      <!-- boton que cierra el formulario solo en pantallas pequeñas -->
+      <div class="boton-cerrar flex justify-end">
+        <button
+          mat-icon-button
+          aria-label="Cerrar formulario"
+          (click)="handleCloseForm()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <!-- botón editar -->
+      @if(adminLogueado){
+      <div>
+        <button
+          (click)="handleOpenUpdatePostForm(post.id)"
+          mat-icon-button
+          aria-label="Botón editar post"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+      }
+    </mat-card-actions>
+  </div>
+  <!-- contenedor principal -->
+  <div class="post-main-container">
+    <!-- imagen portada -->
+    <div class="imagen-portada">
+      <img
+        [src]="post.imagenportada"
+        [alt]="post.altportada"
+        class="width-full"
+      />
+    </div>
+
+    <div class="post-details-container">
+      <div class="content-box">
+        <!-- pasamos el html de textoInfo -->
+        <div
+          [innerHTML]="postInfoContent"
+          class="width-90 margin-auto margin-top1rem"
+        ></div>
+      </div>
+      @if (post.textoprograma1) {
+      <div class="content-box">
+        <!-- pasamos el html de textoInfo -->
+        <div
+          [innerHTML]="postPrograma1Content"
+          class="width-90 margin-auto margin-top1rem"
+        ></div>
+      </div>
+      } @if (post.textoprograma2) {
+      <div class="content-box">
+        <div
+          [innerHTML]="postPrograma2Content"
+          class="width-90 margin-auto margin-top1rem"
+        ></div>
+      </div>
+      } @if (post.textodresscode) {
+      <div class="content-box">
+        <div
+          [innerHTML]="postDresscodeContent"
+          class="width-90 margin-auto margin-top1rem"
+        ></div>
+      </div>
+      } @if (post.textoartistas) {
+      <div class="content-box">
+        <div
+          [innerHTML]="postArtistasContent"
+          class="width-90 margin-auto margin-top1rem"
+        ></div>
+      </div>
+      } @if (post.textodjs) {
+      <div class="content-box">
+        <div
+          [innerHTML]="postDjsContent"
+          class="width-90 margin-auto margin-top1rem"
+        ></div>
+      </div>
+      } @if (post.textopases) {
+      <div class="content-box">
+        <div
+          [innerHTML]="postPasesContent"
+          class="width-90 margin-auto margin-top1rem"
+        ></div>
+      </div>
+      }
+    </div>
+  </div>
+  }
+</div>

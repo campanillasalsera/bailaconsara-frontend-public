@@ -1,0 +1,362 @@
+<!-- toma un padding top con el mismo tamaño que el navbar, para que no se quede escondido -->
+<div class="padding-top-adjust">
+  <div class="signInForm">
+    <div class="container">
+      <!-- EFECTO LIBRO PC -->
+      <div
+        id="cover"
+        class="hidden cover"
+        [ngClass]="{ 'rotate-active': isRegister }"
+      >
+        <div class="front">
+          <img src="assets/img/login-front.jpg" alt="" />
+          <!-- el texto desaparece al activar la rotación 
+                    porque en mozilla no funciona el preserve 3D -->
+          @if (!isRegister) {
+          <div class="text" [ngClass]="{ 'not-show': isRegister }">
+            <span class="text-1">
+              Bienvenidos a <span class="text-red bold">Baila con Sara</span>
+            </span>
+            <span>
+              Pon <span class="text-red bold">ritmo</span> a tu vida
+            </span>
+          </div>
+          }
+        </div>
+        <!-- parte de atra del libro -->
+        <div class="back">
+          <img src="assets/img/login-back.jpg" alt="" />
+        </div>
+      </div>
+
+      <div class="height-full">
+        <div
+          class="form-content height-full"
+          [ngClass]="{ 'translate-active': isRegister }"
+        >
+          <!-- FORMULARIO DE LOGIN -->
+          <div class="login-form height-full">
+            <!-- boton que cierra el formulario solo en pantallas pequeñas -->
+            <div class="flex justify-end hide-pc">
+              <button
+                mat-mini-fab
+                aria-label="Cerrar formulario"
+                (click)="handleCloseForm()"
+                class="close-icon-button"
+              >
+                <mat-icon class="close-icon">close_small</mat-icon>
+              </button>
+            </div>
+
+            <h2 class="text-center margin-bottom">
+              INICIO DE <span class="text-red">SESIÓN</span>
+            </h2>
+            <!-- muestra un spinner mientras recibe respuesta del servidor -->
+            @if (isLoading) {
+            <div class="flex justify-center margin-bottom-1rem">
+              <mat-spinner class="spinner"></mat-spinner>
+            </div>
+            }@else {
+            <!-- formulario de login -->
+            <form [formGroup]="loginForm" (ngSubmit)="handleLogin()">
+              <!-- input emeail -->
+              <div>
+                <mat-form-field appearance="fill" class="form-field">
+                  <mat-label class="text-white">Email</mat-label>
+                  <input
+                    matInput
+                    type="email"
+                    placeholder="Email"
+                    [formControl]="loginForm.controls.email"
+                    required
+                  />
+                  @if (loginForm.controls.email.invalid) {
+                  <mat-error>{{
+                    getErrorMessage(loginForm.controls.email)
+                  }}</mat-error>
+                  }
+                </mat-form-field>
+              </div>
+              <!-- input contraseña -->
+              <div>
+                <mat-form-field class="form-field">
+                  <mat-label class="text-white">Contraseña</mat-label>
+                  <input
+                    matInput
+                    [type]="hide ? 'password' : 'text'"
+                    [formControl]="loginForm.controls.password"
+                    required
+                  />
+                  <a
+                    mat-icon-button
+                    matSuffix
+                    (click)="hide = !hide"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide"
+                  >
+                    <mat-icon>
+                      {{ hide ? "visibility_off" : "visibility" }}
+                    </mat-icon>
+                  </a>
+                  @if (loginForm.controls.password.invalid) {
+                  <mat-error>{{
+                    getErrorMessage(loginForm.controls.password)
+                  }}</mat-error>
+                  }
+                </mat-form-field>
+              </div>
+              <!-- botón enviar login -->
+              <button
+                mat-fab
+                extended
+                color="primary"
+                type="submit"
+                class="margin-top-bottom"
+                [disabled]="loginForm.invalid"
+              >
+                <mat-icon>login</mat-icon>
+                Iniciar Sesión
+              </button>
+            </form>
+            }
+            <!-- lleva a contraseña olvidada -->
+            <p class="text-red pointer" (click)="handleForgotPassword()">
+              ¿Has olvidado tu contraseña?
+            </p>
+            <!-- lleva a formulario de registro -->
+            <p>
+              ¿No estás registrado aun?
+              <span (click)="togglePanel()">
+                <span class="text-red bold pointer">Regístrate</span>
+              </span>
+            </p>
+          </div>
+
+          <!-- FORMULARIO DE REGISTRO -->
+          <div class="signup-form height-full overflowAuto">
+            <!-- boton que cierra el formulario solo en pantallas pequeñas -->
+            <div class="flex justify-end hide-pc">
+              <button
+                mat-mini-fab
+                aria-label="Cerrar formulario"
+                (click)="handleCloseForm()"
+                class="close-icon-button"
+              >
+                <mat-icon class="close-icon">close_small</mat-icon>
+              </button>
+            </div>
+            <h2 id="register" class="text-center margin-bottom">
+              REGISTRO DE <span class="text-red">USUARIO</span>
+            </h2>
+            <!-- lleva a incio de sesión -->
+            <p class="margin-top-bottom">
+              ¿Ya estás registrado?
+              <span (click)="togglePanel()">
+                <span class="text-red bold pointer">Inicia Sesión</span>
+              </span>
+            </p>
+            <!-- muestra un spinner mientras recibe respuesta del servidor -->
+            @if (isLoading) {
+            <div class="flex justify-center margin-bottom-1rem">
+              <mat-spinner class="spinner"></mat-spinner>
+            </div>
+            }@else {
+            <form
+              [formGroup]="registerForm"
+              (ngSubmit)="handleRegister()"
+              class="register-form flex flex-column"
+            >
+              <!-- input nombre -->
+              <div>
+                <mat-form-field class="form-field">
+                  <mat-label class="text-white">Nombre</mat-label>
+                  <input
+                    matInput
+                    placeholder="Nombre"
+                    [formControl]="registerForm.controls.nombre"
+                    required
+                  />
+                  @if (registerForm.controls.nombre.invalid) {
+                  <mat-error>{{
+                    getErrorMessage(registerForm.controls.nombre) +
+                      ": Campo obligatorio. Introduce un nombre válido."
+                  }}</mat-error>
+                  }
+                </mat-form-field>
+              </div>
+              <!-- apellidos input -->
+              <div>
+                <mat-form-field class="form-field">
+                  <mat-label class="text-white">Apellidos</mat-label>
+                  <input
+                    matInput
+                    placeholder="Apellidos"
+                    [formControl]="registerForm.controls.apellidos"
+                    required
+                  />
+                  @if (registerForm.controls.apellidos.invalid) {
+                  <mat-error>{{
+                    getErrorMessage(registerForm.controls.apellidos)
+                  }}</mat-error>
+                  }
+                </mat-form-field>
+              </div>
+              <!-- fecha nacimiento input -->
+              <div>
+                <mat-form-field class="form-field">
+                  <mat-label class="text-white">Fecha de Nacimiento</mat-label>
+                  <input
+                    matInput
+                    [min]="minDate"
+                    [max]="maxDate"
+                    [matDatepicker]="picker"
+                    [formControl]="registerForm.controls.fechanacimiento"
+                  />
+                  <mat-hint>DD/MM/AAAA</mat-hint>
+                  <mat-datepicker-toggle
+                    matIconSuffix
+                    [for]="picker"
+                    class="padding-right-1"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker
+                    touchUi
+                    #picker
+                    matDatepickerParse
+                  ></mat-datepicker>
+                  @if (registerForm.controls.fechanacimiento.invalid) {
+                  <mat-error>{{
+                    getErrorMessage(registerForm.controls.fechanacimiento)
+                  }}</mat-error>
+                  }
+                </mat-form-field>
+              </div>
+              <!-- telefono input -->
+              <div class="flex">
+                <!-- prefijo pais -->
+                <div>
+                  <mat-form-field class="max-width-5rem">
+                    <mat-label class="text-white">Pais</mat-label>
+                    <mat-select [(value)]="selectedCountryCode">
+                      @for (country of countryCodes; track $index) {
+                      <mat-option [value]="country">
+                        {{ country }}
+                      </mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <!-- telefono -->
+                <div class="width-full">
+                  <mat-form-field class="form-field">
+                    <mat-label class="text-white">Teléfono</mat-label>
+                    <input
+                      matInput
+                      placeholder="666999666"
+                      [formControl]="registerForm.controls.telefono"
+                      required
+                    />
+                    <mat-hint>Solo números, sin espacios</mat-hint>
+                    @if (registerForm.controls.telefono.invalid) {
+                    <mat-error>{{
+                      getErrorMessage(registerForm.controls.telefono) +
+                        ": Solo números, sin espacios."
+                    }}</mat-error>
+                    }
+                  </mat-form-field>
+                </div>
+              </div>
+              <!-- email input -->
+              <div>
+                <mat-form-field class="form-field">
+                  <mat-label class="text-white">Email</mat-label>
+                  <input
+                    matInput
+                    placeholder="Email"
+                    [formControl]="registerForm.controls.email"
+                    required
+                  />
+                  @if (registerForm.controls.email.invalid) {
+                  <mat-error>{{
+                    getErrorMessage(registerForm.controls.email)
+                  }}</mat-error>
+                  }
+                </mat-form-field>
+              </div>
+              <!-- contraseña input -->
+              <div>
+                <mat-form-field class="form-field">
+                  <mat-label class="text-white">Contraseña</mat-label>
+                  <input
+                    matInput
+                    [type]="hide ? 'password' : 'text'"
+                    [formControl]="registerForm.controls.password"
+                    required
+                  />
+                  <mat-hint
+                    >Min 8 caracteres, mayúsculas, minúsculas, números y
+                    caracteres especiales</mat-hint
+                  >
+                  <a
+                    mat-icon-button
+                    matSuffix
+                    (click)="hide = !hide"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide"
+                  >
+                    <mat-icon>
+                      {{ hide ? "visibility_off" : "visibility" }}
+                    </mat-icon>
+                  </a>
+                  @if (registerForm.controls.password.invalid) {
+                  <mat-error>{{
+                    getErrorMessage(registerForm.controls.password) +
+                      ": Min 8 caracteres, mayúsculas, minúsculas, números y caracteres especiales"
+                  }}</mat-error>
+                  }
+                </mat-form-field>
+              </div>
+              <!-- rol en el baile -->
+              <div>
+                <p class="text-smaller margin-top-2rem">
+                  Marca tu rol dentro del baile: Lider si haces de hombre o
+                  follower si haces de mujer.
+                </p>
+                <mat-radio-group
+                  class="matRadioButtons flex flex-column"
+                  aria-label="Selecciona una opción"
+                  [formControl]="registerForm.controls.bailerol"
+                >
+                  <mat-radio-button value="lider">Lider</mat-radio-button>
+                  <mat-radio-button value="follower">Follower</mat-radio-button>
+                  @if (registerForm.controls.bailerol.invalid) {
+                  <mat-error>{{
+                    getErrorMessage(registerForm.controls.bailerol)
+                  }}</mat-error>
+                  }
+                </mat-radio-group>
+              </div>
+              <p class="margin-top-2rem margin-bottom-2rem">
+                Una vez registrado recibirás un email para
+                <span class="text-red">validar tu correo</span>, revisa tu
+                bandeja de spam.
+              </p>
+              <!-- botón registrar usuario -->
+              <button
+                mat-fab
+                extended
+                color="primary"
+                type="submit"
+                class="margin-bottom-2rem"
+                [disabled]="registerForm.invalid"
+              >
+                <mat-icon>how_to_reg</mat-icon>
+                Registrar
+              </button>
+            </form>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

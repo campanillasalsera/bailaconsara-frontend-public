@@ -1,0 +1,106 @@
+<!-- toma un padding top con el mismo tamaño que el navbar, para que no se quede escondido -->
+<div class="padding-top-adjust">
+  <!-- icono y titulo -->
+  <div class="">
+    <div class="flex justify-center">
+      <div class="icono-container margin-top1rem">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Clases de bachata en Torremolinos"
+          fontIcon="nightlife"
+          class="icons"
+        >
+        </mat-icon>
+      </div>
+    </div>
+    <h2 class="title">TALLERES DE <span class="text-red">BAILE</span></h2>
+  </div>
+  <!-- botón para crear nuevo taller solo para admin -->
+  @if (adminLogueado) {
+  <div class="fixed-button-container">
+    <div class="button-container">
+      <button
+        (click)="handleOpenCreateTallerForm()"
+        mat-fab
+        color="primary"
+        aria-label="Botón con un icono de añadir"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+  }
+  <!-- lista de cursos -->
+  <div class="cursos-container width-90 margin-auto margin-bottom-1rem">
+    <mat-card class="fondo-semitransparente border-red">
+      <mat-card-title class="subtitle width-90"
+        >Listado de cursos de
+        <span class="text-red">Salsa, Bachata y Kizomba</span></mat-card-title
+      >
+      <mat-card-content>
+        <div class="panel-listado">
+          <!-- recorre el array de talleres -->
+          @for (taller of talleres; track $index) {
+          <mat-card class="taller-card">
+            <div>
+              <div>
+                <span class="text-red bold">{{
+                  taller.nombre.toUpperCase()
+                }}</span>
+              </div>
+              <div>
+                Modalidad: <strong>{{ taller.modalidad }}</strong>
+              </div>
+              <div>
+                Profesores: <strong>{{ taller.profesores }}</strong>
+              </div>
+              <div>
+                Fecha: <strong>{{ taller.fecha }}</strong>
+              </div>
+              <div>
+                Hora: <strong>{{ taller.hora }}</strong>
+              </div>
+              <div>
+                Lugar: <strong>{{ taller.lugar }}</strong>
+              </div>
+
+              @if (taller.isSignedUp) {
+              <h3 class="text-center">
+                Ya estás inscrito en este evento
+                <span class="text-red">
+                  <mat-icon>check</mat-icon>
+                </span>
+              </h3>
+              } @if (taller.hasPartner) {
+              <h3 class="text-center">
+                Ya tienes pareja
+                <span class="text-red">
+                  <mat-icon>check</mat-icon>
+                </span>
+              </h3>
+              }
+            </div>
+            <!-- al seleccionar un taller te lleva a un menú para anotarse en el taller
+                            anular asistencia, anotar acompañante (usuario), editar, eliminar taller,
+                            lista usuarios... (administrador) -->
+            <div class="width-90 margin-auto margin-top1rem">
+              <button
+                mat-raised-button
+                class="width-full"
+                color="primary"
+                (click)="handleOpenUpdateTallerForm(taller)"
+                aria-label="Botón editar post"
+              >
+                <mat-icon>arrow_forward</mat-icon>
+                Seleccionar
+              </button>
+            </div>
+          </mat-card>
+          } @empty {
+          <div>No hay talleres previstos por el momento...</div>
+          }
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

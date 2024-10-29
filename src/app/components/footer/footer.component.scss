@@ -1,0 +1,77 @@
+/* color y borde del footer */
+.footerContainer {
+  background-color: #424242;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-items-strech {
+  align-items: stretch;
+}
+
+/* Vista MINITablet*/
+@media screen and (min-width: 641px) and (max-width: 790px) {
+  /*Si la pantalla tiene enre 641 y 790 px*/
+
+  .footerContainer {
+    justify-content: center;
+  }
+  .with-pc {
+    width: 45%;
+  }
+}
+
+/* Vista Tablet*/
+@media screen and (min-width: 791px) and (max-width: 1007px) {
+  /*Si la pantalla tiene enre 791 y 1007 px*/
+
+  .footerContainer {
+    justify-content: center;
+  }
+  .box-map,
+  .box-contact,
+  .box-menu {
+    width: 45%;
+  }
+}
+
+/***************** Vista PC 1008 ****************/
+@media screen and (min-width: 1008px) {
+  .footerContainer {
+    justify-content: center;
+    padding-top: 2rem;
+  }
+  .with-pc {
+    width: 20%;
+  }
+
+  .card-content-pc {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem;
+  }
+  .button-pc {
+    flex-direction: column;
+  }
+  //impide que los titulos de los mapas se descuadren
+  .max-width-pc {
+    max-width: 200px;
+  }
+  .box-map {
+    width: 18%;
+  }
+  .box-menu {
+    width: 22%;
+  }
+
+  .box-contact {
+    width: 35%;
+  }
+
+  .style-box {
+    height: 100%;
+  }
+}

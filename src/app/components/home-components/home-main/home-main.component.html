@@ -1,0 +1,218 @@
+<!-- FRASE INTRO -->
+<h2 class="text-center margin-top-2rem margin-bottom-2rem text-x-large">
+  <img
+    src="assets/img/Icon-Baila-con-Sara.png"
+    alt="Clases de Salsa en Málaga"
+    title="Clases de Salsa en Málaga"
+  />PONLE <span>RITMO</span> A TU VIDA
+</h2>
+
+<!-- bienvenida solo telefono -->
+<section class="hide-pc">
+  <mat-card class="content-card">
+    <mat-card-header class="justify-center">
+      <mat-card-title class="subtitle"
+        >BIENVENIDOS A
+        <span class="text-red">BAILA CON SARA</span></mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Ponle ritmo a tu vida con las mejores clases de Salsa en Málaga. Aprende
+        también Bachata y Kizomba con expertos en un ambiente de alegría y
+        diversión. Horarios de mañana y tarde. ¡Únete y descubre el placer de
+        bailar con Baila con Sara!
+      </p>
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<!-- content-boxes info principal -->
+<div class="sections">
+  <!-- pulsadores salsa bachata kizomba -->
+  <app-pulsadores></app-pulsadores>
+
+  <!--------------------------------H1----------------------------->
+  <h1 class="titulo">
+    CLASES DE <span class="text-red">SALSA, BACHATA Y KIZOMBA </span> EN
+    TORREMOLINOS Y BENALMÁDENA
+  </h1>
+
+  <!-- content-boxes -->
+  <app-content-boxes></app-content-boxes>
+</div>
+
+<!-- slant aprende a bailar y nuevos amigos-->
+<app-slant [text1]="text1Slant1" [text2]="text2Slant1"> </app-slant>
+
+<!-- galery -->
+<app-home-galery></app-home-galery>
+
+<!-- ubicación solo telefono -->
+<section class="hide-pc">
+  <mat-card class="content-card margin-top-1rem">
+    <mat-card-header class="justify-center">
+      <mat-card-title class="subtitle">
+        <mat-icon
+          class="text-red icon"
+          aria-hidden="false"
+          aria-label="Icono ubicacion"
+          fontIcon="location_on"
+        >
+        </mat-icon
+        ><span class="text-red">UBICACIÓN</span></mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-actions class="botonera">
+      <a
+        href="https://www.google.com/maps/place/Edificio+Innova,+29630+Benalm%C3%A1dena,+M%C3%A1laga/@36.5956179,-4.5295698,15z/data=!4m63m51s0xd72fc8ef6888a71:0xa844d04f83dc13d08m23d36.59561664d-4.529562716s%2Fg%2F11d_7ybyh7"
+        target="_blank"
+      >
+        <button mat-button>
+          INNOVA
+          <img
+            class="boton-map"
+            src="assets/img/innova-Arroyo-de-la-Miel.jpg"
+            alt="Clases de Salsa en Málaga"
+            title="Clases de Salsa en Málaga"
+          />
+        </button>
+      </a>
+      <a
+        href="https://www.google.com/maps/place/C.+Decano+Juan+de+Espino,+29620+Torremolinos,+M%C3%A1laga/@36.6060202,-4.5101702,18z/data=!4m6!3m5!1s0xd72fc70d2f29d61:0x4d906ce65378f79b!8m2!3d36.6056927!4d-4.5088076!16s%2Fg%2F1vnrmcgr"
+        target="_blank"
+      >
+        <button mat-button>
+          ATRÉVETE
+          <img
+            class="boton-map"
+            src="assets/img/atrevete-Torremolinos.jpg"
+            alt="Clases de Salsa en Málaga"
+            title="Clases de Salsa en Málaga"
+          />
+        </button>
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</section>
+
+<!-- selecciona tu nivel solo telefono -->
+<div class="hide-pc">
+  <mat-card class="content-card margin-top-1rem">
+    <app-niveles
+      [backgroundColor]="nivelesBackgroundColor"
+      [nivelesTitleColor]="nivelesTitleColor"
+      [iconNivelesSrc]="iconNivelesSrc"
+      class="margin-top-1rem margin-bottom-1rem"
+    ></app-niveles>
+  </mat-card>
+</div>
+
+<!-- reviews -->
+<section class="reviews margin-top-1rem">
+  <mat-card class="content-card">
+    <mat-card-header class="justify-center">
+      <mat-card-title class="subtitle">
+        <mat-icon
+          class="icon"
+          aria-hidden="false"
+          aria-label="Icono reviews"
+          fontIcon="reviews"
+        ></mat-icon>
+        <h2 class="title-style-pc">
+          <span class="text-red">OPINIONES </span>DE ALUMNOS
+        </h2>
+      </mat-card-title>
+    </mat-card-header>
+    <!-- en movil se muestra solo un box que muestra todas las reviews del array -->
+    <app-reviews
+      [reviews]="reviewsArray"
+      [autoSlide]="false"
+      [slideInterval]="5000"
+      [controles]="true"
+      [indicadores]="true"
+      class="all-reviews"
+    >
+    </app-reviews>
+
+    <!-- en pc se muetran 3 boxes que muestran cada una un tercio de las reviews del array -->
+    <div class="reviews-pc">
+      <app-reviews
+        [reviews]="reviewsArray.slice(0, 6)"
+        [autoSlide]="false"
+        [slideInterval]="5000"
+        [controles]="true"
+        [indicadores]="true"
+        class="less-reviews hidden"
+      >
+      </app-reviews>
+      <app-reviews
+        [reviews]="reviewsArray.slice(6, 12)"
+        [autoSlide]="false"
+        [slideInterval]="5000"
+        [controles]="true"
+        [indicadores]="true"
+        class="less-reviews hidden"
+      >
+      </app-reviews>
+      <app-reviews
+        [reviews]="reviewsArray.slice(12)"
+        [autoSlide]="false"
+        [slideInterval]="5000"
+        [controles]="true"
+        [indicadores]="true"
+        class="less-reviews hidden"
+      >
+      </app-reviews>
+    </div>
+    <!-- botones para añadir o ver reseñas -->
+    <div
+      class="botonera-reviews flex flex-column width-90 margin-auto gap-1 margin-bottom-1rem"
+    >
+      <a href="https://g.page/r/CQAB896EWB73EB0/review" target="_blank">
+        <button mat-raised-button color="primary" class="width-full">
+          <mat-icon class="margin-right-0">rate_review</mat-icon>
+          Añadir reseña
+        </button>
+      </a>
+      <a
+        href="https://www.google.com/search?sca_esv=561038293&sxsrf=AB5stBhzLArkBdga6Xkhl64OGJOeItmb9g%3A1693328255120&q=Baila%20con%20Sara&stick=H4sIAAAAAAAAAONgU1IxqEgxN0pLtjQ0TUlONUmyMLcyqEgzN0w1tbAwSUlNMzYwNDBYxMrnlJiZk6iQnJ-nEJxYlAgAmw9NPzkAAAA&mat=CW9FwHoqr82j&ved=2ahUKEwjso4mpq4KBAxX-dKQEHYmuD-wQrMcEegQICBAH#lrd=0xd72fc915dce4b87:0xf71e5884def30100,1,,,,1"
+        target="_blank"
+      >
+        <button mat-raised-button color="primary" class="width-full">
+          <mat-icon class="margin-right-0">preview</mat-icon>
+          Ver más reseñas
+        </button>
+      </a>
+    </div>
+  </mat-card>
+</section>
+
+<!-- salas de baile -->
+<section
+  class="content-card-container margin-top-1rem hide-pc margin-bottom-2rem"
+>
+  <mat-card class="content-card imgBackground">
+    <mat-card-header class="justify-center">
+      <mat-card-title class="subtitle"
+        >SALAS DE <span class="text-red">BAILE</span></mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <p class="text-center hide-pc margin-top-1rem">
+        Aquí encontrarás alternativas para salir a bailar cada día de la semana.
+      </p>
+    </mat-card-content>
+    <mat-card-actions class="justify-center margin-bottom-1rem margin-top-1rem">
+      <button
+        mat-raised-button
+        color="primary"
+        class="text-red semi-transparent"
+        [routerLink]="['/dondeBailar']"
+      >
+        <mat-icon>group</mat-icon>
+        Salas de Baile
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</section>

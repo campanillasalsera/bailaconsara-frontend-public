@@ -1,0 +1,69 @@
+@if (reviews && reviews.length > 0) { @defer (on viewport) {
+<div class="carrusel-container">
+  <!-- recorro el array de reviews desde el ts
+            Asigno a imagen activa la imagen del index correspondiente
+            Hago lo mismo con el nombre y texto -->
+  @for (review of reviews; track $index) {
+  <div class="img-container">
+    <img
+      [src]="review.imgSrc"
+      [alt]="review.imgAlt"
+      [ngClass]="{ 'imagen-activa': selectedIndex === $index }"
+      class="fade"
+    />
+  </div>
+  <p [ngClass]="{ 'nombre-activo': selectedIndex === $index }">
+    {{ review.nombre }}
+  </p>
+  <blockquote
+    [ngClass]="{ 'text-activo': selectedIndex === $index }"
+    class="text"
+  >
+    <span class="comilla">❝ </span>{{ review.text
+    }}<span class="comilla"> ❞</span>
+  </blockquote>
+  } @if (indicadores) {
+  <div class="carrusel-dot-container">
+    @for (dot of reviews; track $index) {
+    <span
+      class="dot"
+      [ngClass]="{ activa: selectedIndex === $index }"
+      (click)="selectImagen($index)"
+    >
+    </span>
+    }
+  </div>
+  } @if (controles) {
+  <div class="botones-carrusel-container hide">
+    <button
+      mat-mini-fab
+      aria-label="Botón anterior"
+      (click)="irAnterior()"
+      class="arrow-button boton-anterior"
+    >
+      <mat-icon class="text-large text-red bold"
+        >keyboard_double_arrow_left</mat-icon
+      >
+    </button>
+    <button
+      mat-mini-fab
+      aria-label="Botón anterior"
+      (click)="irSiguiente()"
+      class="arrow-button boton-siguiente"
+    >
+      <mat-icon class="text-large text-red bold"
+        >keyboard_double_arrow_right</mat-icon
+      >
+    </button>
+  </div>
+  }
+</div>
+}@loading {
+<div class="flex justify-center">
+  <mat-spinner></mat-spinner>
+</div>
+}@placeholder {
+<div class="flex justify-center">
+  <mat-spinner></mat-spinner>
+</div>
+} }

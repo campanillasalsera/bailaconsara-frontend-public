@@ -1,0 +1,32 @@
+<!-- plantilla de cada post al mostrarse en eventos -->
+<mat-card class="post-card">
+  <img mat-card-image [src]="post.imagenportada" [alt]="post.altportada" />
+  <mat-card-header>
+    <mat-card-title class="titulo-post">
+      {{ post.title.toUpperCase() }}
+    </mat-card-title>
+  </mat-card-header>
+  <!-- muestra botón para editar y para eliminar post -->
+  @if(adminLogueado){
+  <mat-card-actions class="flex justify-between">
+    <div>
+      <button
+        (click)="handleOpenUpdatePostForm(post.id)"
+        mat-icon-button
+        aria-label="Botón editar post"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <div>
+      <button
+        (click)="handleDeletePost(post.id)"
+        mat-icon-button
+        aria-label="Botón eliminar post"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-card-actions>
+  }
+</mat-card>

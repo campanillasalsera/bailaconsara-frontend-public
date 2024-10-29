@@ -1,0 +1,186 @@
+<div class="padding-top-adjust margin-bottom-1rem">
+  <!-- mustra el formulario solo si el administrador está logueado -->
+  @if (adminLogueado) {
+  <!-- contenedor principal -->
+  <div class="main-container margin-top1rem">
+    <!-- form -->
+    <div class="form-container width-90 margin-auto">
+      <form
+        [formGroup]="addTallerForm"
+        (ngSubmit)="handleCreateTaller()"
+        class="post-form"
+      >
+        <!-- boton cierre, icono y titulo -->
+        <div>
+          <!-- boton que cierra el formulario solo en pantallas pequeñas -->
+          <div class="boton-cerrar flex justify-end">
+            <button
+              mat-mini-fab
+              aria-label="Cerrar formulario"
+              (click)="handleCloseForm()"
+            >
+              <mat-icon>close_small</mat-icon>
+            </button>
+          </div>
+          <div class="flex justify-center">
+            <div class="icono-container margin-top1rem">
+              <mat-icon
+                aria-hidden="false"
+                aria-label="Clases de bachata en Torremolinos"
+                fontIcon="post_add"
+                class="icons"
+              >
+              </mat-icon>
+            </div>
+          </div>
+          <h2 class="text-center">
+            AÑADIR <span class="text-red">TALLER</span>
+          </h2>
+        </div>
+        <!-- nombre input-->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Nombre del taller</mat-label>
+            <input
+              matInput
+              placeholder="Nombre del taller"
+              [formControl]="addTallerForm.controls.nombre"
+              required
+            />
+            @if (addTallerForm.controls.nombre.invalid) {
+            <mat-error>{{
+              getErrorMessage(addTallerForm.controls.nombre)
+            }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <!-- modalidad input -->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Modalidad de baile</mat-label>
+            <input
+              matInput
+              placeholder="Modalidad de baile"
+              [formControl]="addTallerForm.controls.modalidad"
+              required
+            />
+            @if (addTallerForm.controls.modalidad.invalid) {
+            <mat-error>{{
+              getErrorMessage(addTallerForm.controls.modalidad)
+            }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <!-- profesores input -->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Profesores</mat-label>
+            <input
+              matInput
+              placeholder="Profesores"
+              [formControl]="addTallerForm.controls.profesores"
+              required
+            />
+            @if (addTallerForm.controls.profesores.invalid) {
+            <mat-error>{{
+              getErrorMessage(addTallerForm.controls.profesores)
+            }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <!-- fecha input -->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Elige una fecha</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              [formControl]="addTallerForm.controls.fecha"
+            />
+            <mat-hint>DD/MM/AAAA</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+              class="padding-right-1"
+            ></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+            @if (addTallerForm.controls.fecha.invalid) {
+            <mat-error>{{
+              getErrorMessage(addTallerForm.controls.fecha)
+            }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <!-- hora input -->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Hora</mat-label>
+            <input
+              matInput
+              placeholder="Hora"
+              [formControl]="addTallerForm.controls.hora"
+              required
+            />
+            <mat-hint>hh:mm</mat-hint>
+            @if (addTallerForm.controls.hora.invalid) {
+            <mat-error>{{
+              getErrorMessage(addTallerForm.controls.hora)
+            }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <!-- lugar input -->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Lugar</mat-label>
+            <input
+              matInput
+              placeholder="Lugar"
+              [formControl]="addTallerForm.controls.lugar"
+              required
+            />
+            @if (addTallerForm.controls.lugar.invalid) {
+            <mat-error>{{
+              getErrorMessage(addTallerForm.controls.lugar)
+            }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <!-- botón crear -->
+        <button
+          mat-fab
+          extended
+          color="primary"
+          type="submit"
+          class="form-field margin-top-bottom"
+          [disabled]="addTallerForm.invalid"
+        >
+          <mat-icon>add_business</mat-icon>
+          Añadir
+        </button>
+      </form>
+    </div>
+  </div>
+  }@else {
+  <!-- mensaje para que el usuario se loguee si quiere acceder aquí -->
+  <div class="custom-card margin-bottom-1rem margin-top1rem">
+    <div
+      class="flex flex-column align-items-center justify-between width-90 margin-auto"
+    >
+      <div class="icono-container">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Clases de bachata en Torremolinos"
+          fontIcon="report"
+          class="icons"
+        >
+        </mat-icon>
+      </div>
+      <mat-card-subtitle class="margin-top1rem"
+        >Necesitas estar logueado para tener acceso a este
+        área</mat-card-subtitle
+      >
+    </div>
+  </div>
+  }
+</div>

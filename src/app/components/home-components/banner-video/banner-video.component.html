@@ -1,0 +1,36 @@
+<!-- video promocional del header -->
+<div class="videoPromo" [ngClass]="{ 'padding-top-adjust': applyPadding }">
+  @defer () {
+  <!-- si el navegador es Safari, no se muetra el video enbebido, sino el video 
+        desde youtube, pues ese navegador da problemas con el video embebido -->
+  @if (!isSafari) {
+  <video
+    id="videoPromo"
+    [autoplay]="true"
+    [loop]="true"
+    preload="none"
+    poster="assets/img/Carrusel1.jpg"
+    [controls]="true"
+    [muted]="true"
+  >
+    <source [src]="videoSrc" type="video/mp4" />
+  </video>
+  }@else {
+  <iframe
+    class="style-iframe"
+    [width]="videoWidth"
+    [height]="videoHeight"
+    [src]="trustedUrl"
+    title="Clases de salsa, bachata y kizomba en Málaga Baila con Sara"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  >
+  </iframe>
+  } }@loading {
+  <div class="flex justify-center">
+    <mat-spinner></mat-spinner>
+  </div>
+  }
+</div>

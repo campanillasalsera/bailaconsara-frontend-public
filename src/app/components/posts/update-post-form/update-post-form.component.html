@@ -1,0 +1,266 @@
+<div class="padding-top-adjust">
+  <!-- mustra los accesos del usuario solo si este está logueado -->
+  @if (true) {
+  <div class="main-container">
+    <!-- boton que cierra el formulario solo en pantallas pequeñas -->
+    <div class="boton-cerrar flex justify-end">
+      <button
+        mat-mini-fab
+        aria-label="Cerrar formulario"
+        (click)="handleCloseForm()"
+      >
+        <mat-icon>close_small</mat-icon>
+      </button>
+    </div>
+    <!-- icono -->
+    <div>
+      <div class="flex justify-center">
+        <div class="icono-container margin-top1rem">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Clases de bachata en Torremolinos"
+            fontIcon="edit_square"
+            class="icons"
+          >
+          </mat-icon>
+        </div>
+      </div>
+    </div>
+    <!-- fomrulario container -->
+    <div class="form-container width-90 margin-auto">
+      <!-- enctype="multipart/form-data" -->
+      <form (ngSubmit)="onSubmit()" class="post-form">
+        <h2 class="text-center">
+          ACTUALIZAR POST:<span class="text-red"> {{ post.title }}</span>
+        </h2>
+        <!-- imagen portada preview -->
+        <div class="form-field">
+          <img mat-card-image [src]="post.imagenportada" class="width-full" />
+        </div>
+        <!-- input selector de imagen -->
+        <div class="editor-container">
+          <p class="editor-label">Selecciona una imagen de portada</p>
+          <input
+            type="file"
+            name="imagenportada"
+            accept="image/*"
+            class="form-field input-file"
+            (change)="getFile($event)"
+          />
+        </div>
+        <!-- input titulo -->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Título Post</mat-label>
+            <input
+              matInput
+              placeholder="Titulo que incluya la frase clave"
+              value="post.title"
+              name="title"
+              [(ngModel)]="post.title"
+            />
+          </mat-form-field>
+        </div>
+        <!-- input alt-imagen-portada -->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Alt Imagen Portada</mat-label>
+            <input
+              matInput
+              placeholder="Alt Imagen Portada. Debe incluir la frase clave"
+              name="altportada"
+              [(ngModel)]="post.altportada"
+            />
+          </mat-form-field>
+        </div>
+        <!-- editor texto principal -->
+        <div class="editor-container">
+          <p class="editor-label">Texto principal</p>
+          <editor
+            [init]="tinyMceSettings"
+            class="editor"
+            value="post.textoinfo"
+            name="textoinfo"
+            [(ngModel)]="post.textoinfo"
+          >
+          </editor>
+        </div>
+        <!-- editor programa 1 -->
+        <div class="editor-container">
+          <p class="editor-label">Programa 1</p>
+          <editor
+            [init]="tinyMceSettings"
+            class="editor"
+            value="post.textoprograma1"
+            name="textoprograma1"
+            [(ngModel)]="post.textoprograma1"
+          >
+          </editor>
+        </div>
+        <!-- editor programa 2 -->
+        <div class="editor-container">
+          <p class="editor-label">Programa 2</p>
+          <editor
+            [init]="tinyMceSettings"
+            class="editor"
+            value="post.textoprograma2"
+            name="textoprograma2"
+            [(ngModel)]="post.textoprograma2"
+          >
+          </editor>
+        </div>
+        <!-- editor Dress code -->
+        <div class="editor-container">
+          <p class="editor-label">Dress Code</p>
+          <editor
+            [init]="tinyMceSettings"
+            class="editor"
+            value="post.textodresscode"
+            name="textodresscode"
+            [(ngModel)]="post.textodresscode"
+          >
+          </editor>
+        </div>
+        <!-- editor artistas -->
+        <div class="editor-container">
+          <p class="editor-label">Artistas</p>
+          <editor
+            [init]="tinyMceSettings"
+            class="editor"
+            value="post.textoartistas"
+            name="textoartistas"
+            [(ngModel)]="post.textoartistas"
+          >
+          </editor>
+        </div>
+        <!-- editor Djs -->
+        <div class="editor-container">
+          <p class="editor-label">Djs</p>
+          <editor
+            [init]="tinyMceSettings"
+            class="editor"
+            value="post.textodjs"
+            name="textodjs"
+            [(ngModel)]="post.textodjs"
+          >
+          </editor>
+        </div>
+        <!-- editor pases -->
+        <div class="editor-container">
+          <p class="editor-label">Pases</p>
+          <editor
+            [init]="tinyMceSettings"
+            class="editor"
+            value="post.textopases"
+            name="textopases"
+            [(ngModel)]="post.textopases"
+          >
+          </editor>
+        </div>
+        <!-- selector de fecha -->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Elige una fecha</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              [(ngModel)]="post.created_at"
+              name="created_at"
+            />
+            <mat-hint>DD/MM/AAAA</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+              class="padding-right-1"
+            ></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <!-- input frase clave -->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Frase clave</mat-label>
+            <input
+              matInput
+              placeholder="Frase clave"
+              value="post.fraseclave"
+              name="fraseclave"
+              [(ngModel)]="post.fraseclave"
+            />
+          </mat-form-field>
+        </div>
+        <!-- input Titulo SEO -->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Título SEO</mat-label>
+            <input
+              matInput
+              placeholder="Título SEO"
+              value="post.tituloseo"
+              name="tituloseo"
+              [(ngModel)]="post.tituloseo"
+            />
+          </mat-form-field>
+        </div>
+        <!-- input Slug -->
+        <div>
+          <mat-form-field class="form-field">
+            <mat-label class="text-white">Slug</mat-label>
+            <input
+              matInput
+              placeholder="Slug"
+              value="post.slug"
+              name="slug"
+              [(ngModel)]="post.slug"
+            />
+          </mat-form-field>
+        </div>
+        <!-- editor Meta descripción -->
+        <div class="editor-container">
+          <p class="editor-label">Meta Descripción</p>
+          <editor
+            [init]="tinyMceSettings"
+            class="editor"
+            value="post.metadescripcion"
+            name="metadescripcion"
+            [(ngModel)]="post.metadescripcion"
+          >
+          </editor>
+        </div>
+        <!-- botón publicar -->
+        <button
+          mat-fab
+          extended
+          color="primary"
+          type="submit"
+          class="form-field margin-top-bottom"
+        >
+          <mat-icon>publish</mat-icon>
+          Publicar
+        </button>
+      </form>
+    </div>
+  </div>
+  }@else {
+  <!-- mensaje para que el usuario se loguee si quiere acceder aquí -->
+  <div class="custom-card margin-bottom-1rem margin-top1rem">
+    <div
+      class="flex flex-column align-items-center justify-between width-90 margin-auto"
+    >
+      <div class="icono-container">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Clases de bachata en Torremolinos"
+          fontIcon="report"
+          class="icons"
+        >
+        </mat-icon>
+      </div>
+      <mat-card-subtitle class="margin-top1rem"
+        >Necesitas estar logueado para tener acceso a este
+        área</mat-card-subtitle
+      >
+    </div>
+  </div>
+  }
+</div>

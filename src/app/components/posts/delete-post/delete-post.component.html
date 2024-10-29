@@ -1,0 +1,15 @@
+<!-- dialogo para confirmar la eliminación de una Post -->
+<div class="dialog">
+  <h2 mat-dialog-title>Eliminar Post</h2>
+  <mat-dialog-content>
+    ¿Seguro que quieres eliminar este post definitivamente?
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <!-- boton NO -->
+    <button mat-button mat-dialog-close cdkFocusInitial color="primary">
+      No
+    </button>
+    <!-- Boton SI eliminar Post -->
+    <button mat-button (click)="handleEliminarPost()">Ok</button>
+  </mat-dialog-actions>
+</div>

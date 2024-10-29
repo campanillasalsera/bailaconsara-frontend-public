@@ -1,0 +1,59 @@
+@if (imagenes && imagenes.length > 0) { @defer (on viewport) {
+<div class="carrusel-container">
+  <!-- mustra las imagenes de un array de imagenes -->
+  @for (imagen of imagenes; track $index) {
+  <img
+    [src]="imagen.imgSrc"
+    [alt]="imagen.imgAlt"
+    [ngClass]="{ 'imagen-activa': selectedIndex === $index }"
+    (click)="selectImagen($index)"
+  />
+  }
+  <!-- muestra los circulos indicadores si así lo requiere el componenete padre -->
+  @if (indicadores) {
+  <div class="carrusel-dot-container">
+    @for (dot of imagenes; track $index) {
+    <span
+      class="dot"
+      [ngClass]="{ activa: selectedIndex === $index }"
+      (click)="selectImagen($index)"
+    >
+    </span>
+    }
+  </div>
+  }
+  <!-- muestra los botones de desplazamiento si así lo indica el componente padre -->
+  @if (controles) {
+  <div class="botones-carrusel-container">
+    <button
+      mat-mini-fab
+      aria-label="Botón anterior"
+      (click)="irAnterior()"
+      class="arrow-button"
+    >
+      <mat-icon class="text-large text-red bold"
+        >keyboard_double_arrow_left</mat-icon
+      >
+    </button>
+    <button
+      mat-mini-fab
+      aria-label="Botón anterior"
+      (click)="irSiguiente()"
+      class="arrow-button"
+    >
+      <mat-icon class="text-large text-red bold"
+        >keyboard_double_arrow_right</mat-icon
+      >
+    </button>
+  </div>
+  }
+</div>
+}@loading {
+<div class="flex justify-center">
+  <mat-spinner></mat-spinner>
+</div>
+}@placeholder {
+<div class="flex justify-center">
+  <mat-spinner></mat-spinner>
+</div>
+} }

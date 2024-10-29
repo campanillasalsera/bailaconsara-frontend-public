@@ -1,0 +1,89 @@
+/******************* Pulsadores *************/
+.pulsadores {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 3rem;
+}
+//reparte el espacio en 3
+.pulsador {
+  flex: 1 1 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+.pulsador-card {
+  flex: 1; /* Esto hace que cada card ocupe todo el espacio disponible, asegurando que todos tengan la misma altura */
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.pulsador-card img {
+  width: 3rem;
+}
+
+img {
+  width: 100%;
+}
+
+.textPulsadorTLF {
+  text-align: center;
+}
+
+/* Vista MINITablet*/
+@media screen and (min-width: 641px) and (max-width: 790px) {
+  /*Si la pantalla tiene enre 641 y 790 px*/
+
+  .pulsadores {
+    flex-direction: row;
+  }
+
+  .pulsador-card {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Vista Tablet*/
+@media screen and (min-width: 791px) and (max-width: 1007px) {
+  /*Si la pantalla tiene enre 791 y 1007 px*/
+
+  .pulsadores {
+    flex-direction: row;
+  }
+  .pulsador {
+    max-width: 30%;
+  }
+  .pulsador-card {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/***************** Vista PC 1008 ****************/
+@media screen and (min-width: 1008px) {
+  .pulsadores {
+    flex-direction: row;
+    width: 80%;
+    margin: auto;
+  }
+  .pulsador {
+    max-width: 30%;
+  }
+
+  .textPulsadorTLF {
+    display: none;
+  }
+
+  .textPulsadorPC {
+    display: block;
+    margin-top: 1rem;
+  }
+}

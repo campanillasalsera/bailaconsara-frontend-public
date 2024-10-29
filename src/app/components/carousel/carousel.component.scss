@@ -1,0 +1,83 @@
+.carrusel-container {
+  width: 95%;
+  margin: 1.5rem auto;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.carrusel-container img {
+  display: none;
+  border-radius: 5px;
+}
+
+.carrusel-container img.imagen-activa {
+  display: block;
+  width: 100%;
+}
+
+/* indicadores-dot */
+.carrusel-dot-container {
+  position: absolute;
+  bottom: 0.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  cursor: pointer;
+  height: 8px;
+  width: 8px;
+  margin: 2px 5px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  transition: opacity 1s ease;
+  opacity: 0.6;
+}
+
+.activa,
+.dot:hover {
+  opacity: 1;
+}
+
+/* botones a izquierda y derecha */
+.botones-carrusel-container {
+  position: absolute;
+  bottom: 40%;
+  left: 5.2%;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.arrow-button {
+  background-color: #ffffffbd;
+}
+
+/* Vista Tablet*/
+@media screen and (min-width: 791px) and (max-width: 1007px) {
+  .carrusel-container {
+    width: 75%;
+  }
+}
+
+/* Vista Pc pequeño*/
+@media screen and (min-width: 1008px) and (max-width: 1200px) {
+  .botones-carrusel-container {
+    top: 200px;
+  }
+}
+/* Vista Pc mediano*/
+@media screen and (min-width: 1201px) and (max-width: 1400px) {
+  .botones-carrusel-container {
+    top: 220px;
+  }
+}
+
+/***************** Vista PC grande ****************/
+@media screen and (min-width: 1401px) {
+  .botones-carrusel-container {
+    top: 250px;
+  }
+}

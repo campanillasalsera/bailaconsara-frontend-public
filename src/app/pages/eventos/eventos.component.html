@@ -1,0 +1,42 @@
+<!-- baja la altura del componente para que no quede oculto por el navbar -->
+<div class="main-container padding-top-adjust">
+  <!-- botón crear post, solo para administrador -->
+  @if (adminlogueado) {
+  <div class="button-container">
+    <button
+      (click)="handleOpenCreatePostForm()"
+      mat-fab
+      color="primary"
+      aria-label="Botón con un icono de añadir"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  }
+  <!-- inicio diferido -->
+  @defer (on viewport) {
+  <div class="post-cards-container">
+    <!-- recorre el array de posts -->
+    @for (post of posts; track 1) {
+    <div class="post-item">
+      <!-- al hacer click sobre la tarjeta lleva al post completo -->
+      <a class="pointer" (click)="handleGetPostById(post)">
+        <!-- muestra una tarjeta con el nombre y la foto -->
+        <app-post-template [post]="post"></app-post-template>
+      </a>
+    </div>
+    } @empty {
+    <div>Posts Vacío</div>
+    }
+  </div>
+  <!-- mustra un spinner cuando está cargando -->
+  }@loading {
+  <div class="flex justify-center margin-bottom-1rem">
+    <mat-spinner class="spinner"></mat-spinner>
+  </div>
+  }@placeholder {
+  <div class="flex justify-center margin-bottom-1rem">
+    <mat-spinner class="spinner"></mat-spinner>
+  </div>
+  }
+</div>

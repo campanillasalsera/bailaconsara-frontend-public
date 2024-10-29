@@ -1,0 +1,30 @@
+<!-- componente que da formato una tarjeta que contiene un iframe de video con inicio diferido 
+y que obtiene los la anchura y altura desde el padre, así como el src-->
+@defer (on viewport) {
+<a>
+  <iframe
+    class="style-iframe"
+    [width]="videoWidth"
+    [height]="videoHeight"
+    [src]="trustedUrl"
+    title="Clases de salsa, bachata y kizomba por las mañanas en Málaga"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  >
+  </iframe>
+</a>
+}@loading {
+<div class="flex justify-center">
+  <div class="flex justify-center margin-bottom-1rem">
+    <mat-spinner class="spinner"></mat-spinner>
+  </div>
+</div>
+}@placeholder {
+<div class="flex justify-center">
+  <div class="flex justify-center margin-bottom-1rem">
+    <mat-spinner class="spinner"></mat-spinner>
+  </div>
+</div>
+}

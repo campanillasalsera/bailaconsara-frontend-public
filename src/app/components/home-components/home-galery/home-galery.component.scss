@@ -1,0 +1,39 @@
+.carrusel-mat-container {
+  width: 90%;
+  margin: auto;
+}
+.content-card {
+  margin: auto;
+  border: 3px solid red;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.galery-container {
+  gap: 1rem;
+}
+
+/* Vista Tablet*/
+@media screen and (min-width: 791px) and (max-width: 1007px) {
+  /*Si la pantalla tiene enre 791 y 1007 px*/
+}
+
+/***************** Vista PC 1008 ****************/
+@media screen and (min-width: 1008px) {
+  .galery-container {
+    width: 90%;
+    margin: 9rem auto 5rem auto;
+  }
+
+  .carrusel-mat-container {
+    width: 48%;
+  }
+
+  .content-card {
+    border: 0;
+    background-color: transparent;
+  }
+
+  .subtitle {
+    font-size: x-large;
+  }
+}

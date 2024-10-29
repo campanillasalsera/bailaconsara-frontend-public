@@ -1,0 +1,107 @@
+<div class="form-container">
+  <!-- boton que cierra el formulario solo en pantallas pequeñas -->
+  <div class="boton-cerrar flex justify-end">
+    <button
+      mat-mini-fab
+      aria-label="Cerrar formulario"
+      (click)="handleCloseForm()"
+      class="close-icon-button"
+    >
+      <mat-icon class="close-icon">close_small</mat-icon>
+    </button>
+  </div>
+  <!-- formulario de actualizacion de sala -->
+  <form (ngSubmit)="onSubmit()">
+    <h2 class="text-center">
+      ACTUALIZAR SALA:<span class="text-red"> {{ sala.nombreSala }}</span>
+    </h2>
+    <!-- uso ngModel en vez de formGroup y formControl para poder mostrar los datos recibidos del servidor -->
+    <!-- nombreSala input -->
+    <div>
+      <mat-form-field class="form-field">
+        <mat-label class="text-white">Nombre de la sala</mat-label>
+        <input
+          matInput
+          placeholder="Nombre de la sala"
+          value="sala.nombreSala"
+          name="nombreSala"
+          [(ngModel)]="sala.nombreSala"
+        />
+      </mat-form-field>
+    </div>
+    <!-- localidad input -->
+    <div>
+      <mat-form-field class="form-field">
+        <mat-label class="text-white">Localidad</mat-label>
+        <input
+          matInput
+          placeholder="Localidad"
+          value="sala.localidad"
+          name="localidad"
+          [(ngModel)]="sala.localidad"
+        />
+      </mat-form-field>
+    </div>
+    <!-- dirección input -->
+    <div>
+      <mat-form-field class="form-field">
+        <mat-label class="text-white">Dirección</mat-label>
+        <input
+          matInput
+          placeholder="Dirección"
+          value="sala.address"
+          name="address"
+          [(ngModel)]="sala.address"
+        />
+      </mat-form-field>
+    </div>
+    <!-- dias de la semana -->
+    <div class="flex flex-column align-items-start width-90">
+      <p class="text-left width-90 margin-auto">
+        <span class="text-red">*</span> Días de la semana que abre esta sala:
+      </p>
+      <!-- recorre el array con los días de la semana -->
+      @for (dia of diasSemana; track $index) {
+      <p>
+        <mat-checkbox
+          [value]="dia"
+          [checked]="isDaySelected(dia)"
+          (change)="onDaySelected($event, dia)"
+          class="check-box"
+        >
+          {{ dia }}
+        </mat-checkbox>
+      </p>
+      <!-- si se hace click en un día se abre los checkbox de los estilos musicales para ese dia -->
+      @if (isDaySelected(dia)) {
+      <div class="generos-musicales">
+        <p class="text-left">
+          <span class="text-red">*</span> Señala qué género musical ponen este
+          día:
+        </p>
+        @for (generoMusical of generosMusicales; track $index) {
+        <mat-checkbox
+          [value]="generoMusical"
+          [checked]="isGenreSelected(dia, generoMusical)"
+          (change)="onGenreSelected($event, dia, generoMusical)"
+          class="check-box"
+        >
+          {{ generoMusical }}
+        </mat-checkbox>
+        }
+      </div>
+      } }
+    </div>
+    <!-- boton publicar actualización sala -->
+    <button
+      mat-fab
+      extended
+      color="primary"
+      type="submit"
+      class="form-field margin-top-bottom"
+    >
+      <mat-icon>publish</mat-icon>
+      Publicar
+    </button>
+  </form>
+</div>

@@ -1,0 +1,17 @@
+.videoPromo {
+  width: 100%;
+}
+/* le da al video el ancho de su padre */
+#videoPromo {
+  width: inherit;
+}
+
+.padding-top-adjust {
+  padding-top: 112px;
+}
+
+@media (min-width: 600px) {
+  .padding-top-adjust {
+    padding-top: 128px;
+  }
+}

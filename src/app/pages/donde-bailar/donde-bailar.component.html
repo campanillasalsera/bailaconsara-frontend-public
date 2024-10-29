@@ -1,0 +1,134 @@
+<!-- toma un padding top con el mismo tamaño que el navbar, para que no se quede escondido -->
+<div class="padding-top-adjust">
+  <!-- div que aporta la imagen de fondo -->
+  <div class="imgBackground">
+    <!-- icono y titulo -->
+    <div class="">
+      <div class="flex justify-center">
+        <div class="icono-container margin-top1rem">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Clases de bachata en Torremolinos"
+            fontIcon="nightlife"
+            class="icons"
+          >
+          </mat-icon>
+        </div>
+      </div>
+      <h2 class="title">
+        SALAS DE <span class="text-red">BAILE EN MÁLAGA</span>
+      </h2>
+      <!-- aparecen opciones extra si el usuario logueda es administrador -->
+      @if (adminLogueado) {
+      <!-- botón para crear sala nueva -->
+      <div class="fixed-button-container">
+        <div class="button-container">
+          <button
+            (click)="handleOpenCreateSalaForm()"
+            mat-fab
+            color="primary"
+            aria-label="Botón con un icono de añadir"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+      }
+    </div>
+    <!-- recuadro con las salas -->
+    <div class="salas-container width-90 margin-auto">
+      <mat-card class="fondo-semitransparente border-red padding-bottom-1rem">
+        <mat-card-title class="subtitle width-90"
+          >Descubre los Mejores Lugares para
+          <span class="text-red">Bailar Salsa, Bachata y Kizomba</span> en
+          Málaga</mat-card-title
+        >
+        <mat-card-content class="width-90 margin-auto"
+          >¿Eres amante de la salsa, la bachata o la kizomba? ¡Estás en el lugar
+          perfecto! En nuestra web, te mostramos los mejores lugares en Málaga
+          donde puedes disfrutar de estos apasionantes bailes todos los días de
+          la semana.
+        </mat-card-content>
+        <mat-card-actions>
+          <!-- selector de dias -->
+          <div class="selector-dia-container margin-top-1">
+            <mat-form-field class="selector">
+              <mat-label class="text-red bold"
+                >SELECCIONA UN DÍA DE LA SEMANA</mat-label
+              >
+              <!-- si cambia de dia, se resetea la lista de elementos seleccionados -->
+              <mat-select
+                [(value)]="diaSelected"
+                class="matSelect"
+                (selectionChange)="handleSelection(diaSelected)"
+                panelClass="panel-opciones"
+              >
+                <mat-option value="lunes" class="matOption">Lunes</mat-option>
+                <mat-option value="martes" class="matOption">Martes</mat-option>
+                <mat-option value="miercoles" class="matOption"
+                  >Miércoles</mat-option
+                >
+                <mat-option value="jueves" class="matOption">Jueves</mat-option>
+                <mat-option value="viernes" class="matOption"
+                  >Viernes</mat-option
+                >
+                <mat-option value="sabado" class="matOption">Sábado</mat-option>
+                <mat-option value="domingo" class="matOption"
+                  >Domingo</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </mat-card-actions>
+        <!-- Listado de locoles donde bailar -->
+        <div class="panel-listado">
+          <h3 class="titulo-listado">
+            Listado de salas donde bailar en {{ diaSelected.toUpperCase() }}
+          </h3>
+          <!-- recorre el array de salas -->
+          @for (sala of salas; track $index) {
+          <mat-card class="sala-baile">
+            <div>
+              <div>
+                <span class="text-red bold">{{
+                  sala.nombreSala.toUpperCase()
+                }}</span>
+                - {{ sala.localidad }}
+              </div>
+              <div>Dirección: {{ sala.address }}</div>
+              <div>Géneros musicales: {{ sala.generos.join(", ") }}</div>
+            </div>
+            <!-- si el usuario es administrador muestra boton editar y eliminar -->
+            @if(adminLogueado){
+            <mat-card-actions class="iconos-edit-delete">
+              <!-- boton editar -->
+              <div>
+                <button
+                  (click)="handleOpenUpdateSalaForm(sala.id)"
+                  mat-icon-button
+                  aria-label="Botón editar post"
+                >
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </div>
+              <!-- boton eliminar -->
+              <div>
+                <button
+                  (click)="handleDeleteSala(sala.id)"
+                  mat-icon-button
+                  aria-label="Botón eliminar post"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </mat-card-actions>
+            }
+          </mat-card>
+          } @empty {
+          <div>No hay salas para este día.</div>
+          }
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

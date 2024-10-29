@@ -1,0 +1,14 @@
+<!-- muestra la imagen en grande y un botón para cerrar -->
+<mat-card class="img-container">
+  <div class="boton-cerrar-container flex justify-end">
+    <button
+      mat-icon-button
+      class="close-icon-button"
+      aria-label="Cerrar formulario"
+      (click)="close()"
+    >
+      <mat-icon class="close-icon">close_small</mat-icon>
+    </button>
+  </div>
+  <img [src]="data.image" [alt]="data.imageAlt" />
+</mat-card>

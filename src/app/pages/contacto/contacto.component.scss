@@ -1,0 +1,88 @@
+//Ajusta el padding del componente para que no quede oculto por el nav
+.padding-top-adjust {
+  padding-top: 112px;
+}
+/* efecto parallax, el fondo se queda fijo y los elementos se desplazan encima */
+.imgBackground {
+  background-image: url("https://bailaconsara.com/assets/img/fondo-contacto.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.contact-wrapper {
+  width: 90%;
+  margin: auto;
+}
+.icono-container {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  background-color: red;
+}
+.icons {
+  border-radius: 50%;
+  font-size: 50px;
+  width: 50px;
+  height: 50px;
+  align-self: center;
+}
+.title {
+  text-align: center;
+  font-size: x-large;
+}
+.margin-top1rem {
+  margin-top: 1rem;
+}
+.margin-bottom-1rem {
+  margin-bottom: 1rem;
+}
+.matCard {
+  background-color: rgb(0, 0, 0, 0.7);
+}
+.mat-header-image {
+  background-size: cover;
+}
+.whatsapp {
+  background-image: url("https://bailaconsara.com/assets/img/icono-whatsapp-rojo.png");
+}
+.email {
+  background-image: url("https://bailaconsara.com/assets/img/icono-email-rojo.png");
+}
+.telefono {
+  background-image: url("https://bailaconsara.com/assets/img/icono-telefono-rojo.png");
+}
+.telegram {
+  background-image: url("https://bailaconsara.com/assets/img/icono-telegram-rojo.png");
+}
+.instagram {
+  background-image: url("https://bailaconsara.com/assets/img/icono-instagram-rojo.png");
+}
+.facebook {
+  background-image: url("https://bailaconsara.com/assets/img/icono-facebook-rojo.png");
+}
+.ubicacion {
+  background-image: url("https://bailaconsara.com/assets/img/icono-ubicacion-rojo.png");
+}
+.link {
+  text-decoration: none;
+  color: white;
+}
+
+//Ajusta el padding del componente para que no quede oculto por el nav
+@media (min-width: 600px) {
+  .padding-top-adjust {
+    padding-top: 128px;
+  }
+}
+
+/***************** Vista PC 1008 ****************/
+@media screen and (min-width: 1008px) {
+  .contact-wrapper {
+    width: 70%;
+  }
+}

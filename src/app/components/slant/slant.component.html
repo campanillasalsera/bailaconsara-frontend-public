@@ -1,0 +1,24 @@
+<!-- div con transform skewY para que se muestre en forma de slant.
+A los textos se les quita el skewY y se posicionan fuera de la pantalla
+para crear una transicion hasta el centro de la pantalla.
+El texto text-x-large solo se aplica en pc.
+El texto a mostra será recibido desde el padre. -->
+<div
+  class="slant skewY overflowHidden"
+  [ngStyle]="{ 'background-color': backgroundColor }"
+>
+  <h2
+    class="text-red unSkew text-center bold positionHiddenLeft text-x-large"
+    [ngClass]="{ slideRight: isSlideRightin }"
+    [ngStyle]="{ color: textColor }"
+  >
+    {{ text1 }}
+  </h2>
+  <h2
+    class="unSkew text-center bold positionHiddenRight text-x-large"
+    [ngClass]="{ slideLeft: isSlideLeftin }"
+    [ngStyle]="{ color: textColor }"
+  >
+    {{ text2 }}
+  </h2>
+</div>

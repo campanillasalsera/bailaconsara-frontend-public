@@ -1,0 +1,137 @@
+<div class="form-container">
+  <form
+    [formGroup]="addSalaForm"
+    (ngSubmit)="handleAddSala()"
+    class="flex flex-column"
+  >
+    <div class="">
+      <!-- boton que cierra el formulario solo en pantallas pequeñas -->
+      <div class="boton-cerrar flex justify-end">
+        <button
+          mat-mini-fab
+          aria-label="Cerrar formulario"
+          (click)="handleCloseForm()"
+        >
+          <mat-icon>close_small</mat-icon>
+        </button>
+      </div>
+      <!-- icono y titulo -->
+      <div class="flex justify-center">
+        <div class="icono-container margin-top1rem">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Clases de bachata en Torremolinos"
+            fontIcon="post_add"
+            class="icons"
+          >
+          </mat-icon>
+        </div>
+      </div>
+      <h2 class="text-center">
+        AÑADIR <span class="text-red">SALA DE BAILE</span>
+      </h2>
+    </div>
+    <!-- nombreSala input -->
+    <div>
+      <mat-form-field class="form-field">
+        <mat-label class="text-white">Nombre de la sala</mat-label>
+        <input
+          matInput
+          placeholder="Nombre de la sala"
+          [formControl]="addSalaForm.controls.nombreSala"
+          required
+        />
+        @if (addSalaForm.controls.nombreSala.invalid) {
+        <mat-error>{{
+          getErrorMessage(addSalaForm.controls.nombreSala)
+        }}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <!-- localidad input -->
+    <div>
+      <mat-form-field class="form-field">
+        <mat-label class="text-white">Localidad</mat-label>
+        <input
+          matInput
+          placeholder="Localidad"
+          [formControl]="addSalaForm.controls.localidad"
+          required
+        />
+        @if (addSalaForm.controls.localidad.invalid) {
+        <mat-error>{{
+          getErrorMessage(addSalaForm.controls.localidad)
+        }}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <!-- dirección input -->
+    <div>
+      <mat-form-field class="form-field">
+        <mat-label class="text-white">Dirección</mat-label>
+        <input
+          matInput
+          placeholder="Dirección"
+          [formControl]="addSalaForm.controls.address"
+          required
+        />
+        @if (addSalaForm.controls.address.invalid) {
+        <mat-error>{{
+          getErrorMessage(addSalaForm.controls.address)
+        }}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <!-- dias de la semana -->
+    <div
+      formArrayName="diasGeneros"
+      class="flex flex-column align-items-start width-90"
+    >
+      <p class="text-left width-90 margin-auto">
+        <span class="text-red">*</span> Señala los días de la semana que abre
+        esta sala:
+      </p>
+      <!-- recorre el array con los días de la semana -->
+      @for (dia of diasSemana; track $index) {
+      <p>
+        <mat-checkbox
+          [value]="dia"
+          (change)="onDaySelected($event, dia)"
+          class="check-box"
+        >
+          {{ dia }}
+        </mat-checkbox>
+      </p>
+      <!-- si se hace click en un día se abre los checkbox de los estilos musicales para ese dia -->
+      @if (diasAbiertos.includes(dia)) {
+      <div class="generos-musicales">
+        <p class="text-left">
+          <span class="text-red">*</span> Señala qué género musical ponen este
+          día:
+        </p>
+        @for (generoMusical of generosMusicales; track $index) {
+        <mat-checkbox
+          [value]="generoMusical"
+          (change)="onGenreSelected($event, dia, generoMusical)"
+          class="check-box"
+        >
+          {{ generoMusical }}
+        </mat-checkbox>
+        }
+      </div>
+      } }
+    </div>
+    <!-- boton añadir sala -->
+    <button
+      mat-fab
+      extended
+      color="primary"
+      type="submit"
+      class="form-button margin-top-bottom"
+      [disabled]="addSalaForm.invalid"
+    >
+      <mat-icon>add_business</mat-icon>
+      Añadir
+    </button>
+  </form>
+</div>

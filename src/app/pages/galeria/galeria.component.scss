@@ -1,0 +1,59 @@
+//Ajusta el padding del componente para que no quede oculto por el nav
+.padding-top-adjust {
+  padding-top: 112px;
+}
+.icono-container {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  background-color: red;
+}
+.icons {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+  align-self: center;
+}
+.title {
+  width: 90%;
+  margin: auto auto 2rem auto;
+  text-align: center;
+  font-size: x-large;
+}
+.carrusel-mat-container {
+  width: 90%;
+  margin: 1rem auto;
+  border: 3px solid red;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.content-card {
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.margin-top1rem {
+  margin-top: 1rem;
+}
+.margin-bottom-1rem {
+  margin-bottom: 1rem;
+}
+
+//Ajusta el padding del componente para que no quede oculto por el nav
+@media (min-width: 600px) {
+  .padding-top-adjust {
+    padding-top: 128px;
+  }
+}
+
+/***************** Vista PC 1008 ****************/
+@media screen and (min-width: 1008px) {
+  .carruseles-container {
+    width: 70%;
+    margin: auto;
+    flex-direction: row;
+    gap: 3rem;
+  }
+}

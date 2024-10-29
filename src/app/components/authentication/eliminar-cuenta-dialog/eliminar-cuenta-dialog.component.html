@@ -1,0 +1,14 @@
+<!-- dialogo para confirmar antes de eliminar -->
+<div class="background-grey">
+  <h2 mat-dialog-title>Eliminar Cuenta</h2>
+  <mat-dialog-content>
+    ¿Seguro que quieres eliminar la cuenta definitivamente? Esta acción no se
+    puede revertir.
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close cdkFocusInitial color="primary">
+      No
+    </button>
+    <button mat-button (click)="handleEliminarUsuario()">Ok</button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,21 @@
+<mat-card class="img-container">
+  <div class="boton-cerrar-container flex justify-end">
+    <button
+      mat-icon-button
+      class="close-icon-button"
+      aria-label="Cerrar formulario"
+      (click)="close()"
+    >
+      <mat-icon class="close-icon">close_small</mat-icon>
+    </button>
+  </div>
+  <mat-card-content class="margin-bottom-1rem">
+    <h2 class="text-center">{{ data.descripcion }}</h2>
+  </mat-card-content>
+  <app-video-card
+    class="videoCard"
+    [srcVideo]="data.srcVideo"
+    [videoWidth]="videoWidth"
+  >
+  </app-video-card>
+</mat-card>

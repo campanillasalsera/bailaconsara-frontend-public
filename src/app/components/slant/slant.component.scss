@@ -1,0 +1,93 @@
+.slant {
+  // background-color: #fff;
+  padding: 2rem 0;
+  margin: 2rem 0;
+}
+
+//Hace que los deplazamientos fuera del scree
+//no afecten al resto de componentes con position
+//absolute o relative
+.overflowHidden {
+  overflow: hidden;
+}
+.skewY {
+  transform: skewY(7deg);
+}
+.unSkew {
+  transform: skewY(-7deg);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.positionHiddenLeft {
+  position: relative;
+  left: -200rem;
+  transition: left 1s ease-in-out;
+}
+
+.positionHiddenRight {
+  position: relative;
+  right: -200rem;
+  transition: right 1s ease-in-out;
+}
+.slideRight {
+  left: 0;
+  transition: left 1s ease-in-out;
+}
+.slideLeft {
+  right: 0;
+  transition: right 1s ease-in-out;
+}
+
+/* Vista MINITablet*/
+@media screen and (min-width: 641px) and (max-width: 790px) {
+  /*Si la pantalla tiene enre 641 y 790 px*/
+
+  .slant {
+    margin: 3rem 0;
+  }
+}
+
+/* Vista Tablet*/
+@media screen and (min-width: 791px) and (max-width: 1007px) {
+  /*Si la pantalla tiene enre 791 y 1007 px*/
+
+  .slant {
+    padding: 3rem 0;
+    margin: 4rem 0;
+  }
+}
+
+/***************** Vista PC 1008 ****************/
+@media screen and (min-width: 1008px) {
+  .slant {
+    padding: 5rem 0;
+    margin: 6rem 0;
+  }
+
+  .text-x-large {
+    font-size: x-large !important;
+  }
+  .positionHiddenLeft {
+    position: relative;
+    left: -1120px;
+    transition: left 0.7s ease-in-out;
+  }
+
+  .positionHiddenRight {
+    position: relative;
+    right: -1250px;
+    transition: right 0.7s ease-in-out;
+  }
+
+  .slideRight {
+    left: 0;
+    transition: left 0.7s ease-in-out;
+  }
+  .slideLeft {
+    right: 0;
+    transition: right 0.7s ease-in-out;
+  }
+}

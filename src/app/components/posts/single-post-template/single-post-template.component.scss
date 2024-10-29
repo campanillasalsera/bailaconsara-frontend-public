@@ -1,0 +1,37 @@
+//Ajusta el padding del componente para que no quede oculto por el nav
+.padding-top-adjust {
+  padding-top: 112px;
+}
+
+.actions-container {
+  background-color: #212121;
+}
+.post-main-container {
+  background-color: rgba(0, 0, 0, 0.809);
+}
+.post-details-container {
+  background-color: rgba(0, 0, 0, 0.743);
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  margin: -1rem auto;
+}
+.content-box {
+  width: 90%;
+  margin: 1rem auto;
+  border: 3px solid red;
+}
+
+//Ajusta el padding del componente para que no quede oculto por el nav
+@media (min-width: 600px) {
+  .padding-top-adjust {
+    padding-top: 128px;
+  }
+}
+
+/***************** Vista PC 1008 ****************/
+@media screen and (min-width: 1008px) {
+  .post-main-container {
+    width: 70%;
+    margin: auto;
+  }
+}

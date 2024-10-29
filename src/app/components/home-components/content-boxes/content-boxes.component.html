@@ -1,0 +1,146 @@
+<!--------------------------------------- CONTENT BOXES ------------------------------------------>
+<section class="flex wrap contentBoxesInfo">
+  <!-- BIENVENIDO PC -->
+  <div class="oculto content-card-container show-pc">
+    <mat-card class="content-card">
+      <mat-card-header class="justify-center">
+        <mat-card-title class="subtitle"
+          >BIENVENIDOS A
+          <span class="text-red">BAILA CON SARA</span></mat-card-title
+        >
+      </mat-card-header>
+      <mat-card-content>
+        <h3 class="text-center">
+          Clases de <br /><strong><span class="text-red">S</span>alsa</strong>,
+          <strong><span class="text-red">B</span>achata</strong> y
+          <strong><span class="text-red">K</span>izomba</strong>
+        </h3>
+        <p class="text-margin">
+          Usamos una metodología divertida y eficaz, propiciando un ambiente
+          donde los alumnos puedan desconectar de la rutina y el estrés, conocer
+          gente nueva y aprender mientras se divierten. Disponemos de tres
+          niveles distintos para que puedas avanzar a tu ritmo. Fácil acceso
+          desde Fuengirola, Mijas, Alhaurín y alrededores. Más de 15 años de
+          experiencia nos avalan. Enseñamos desde la pasión y el amor por estos
+          ritmos y bailes.
+        </p>
+        <div class="text-center hide-tablet">
+          <img
+            mat-card-image
+            src="assets/img/Logo-baila-con-sara.png"
+            alt="Clases de salsa en Torremolinos"
+            class="logo-bienvenida"
+          />
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- CLASES MAÑANA Y TARDE -->
+  <div class="content-card-container">
+    <mat-card class="content-card">
+      <mat-card-header class="justify-center">
+        <mat-card-title class="subtitle"
+          >HORARIOS DE
+          <span class="text-red">MAÑANA Y TARDE</span></mat-card-title
+        >
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="assets/img/Clases-de-Salsa-en-Torremolinos.jpg"
+        alt="Clases de salsa en Torremolinos"
+        title="Clases de Salsa en Torremolinos"
+        class="horarios-img"
+      />
+      <h3 class="subtitle">
+        Clases de
+        <strong class="text-cream"><span class="text-red">S</span>alsa</strong>,
+        <strong><span class="text-red">B</span>achata</strong>
+        y <strong><span class="text-red">K</span>izomba</strong> en Torremolinos
+        y Benalmádena por las mañanas y por las tardes
+      </h3>
+      <mat-card-content>
+        <p class="text-center hide-pc">Combínalos según tu necesidad</p>
+      </mat-card-content>
+      <mat-card-actions class="justify-center margin-bottom-1rem">
+        <button
+          mat-raised-button
+          color="primary"
+          class="text-red"
+          [routerLink]="['/horarios']"
+        >
+          <mat-icon>schedule</mat-icon>
+          Horarios
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <!-- VIDEO CLASES MAÑANAS -->
+  <div class="content-card-container videoCard" #videoMorningCard>
+    <mat-card class="content-card">
+      <mat-card-header class="justify-center">
+        <mat-card-title class="subtitle"
+          >CLASES POR LA <span class="text-red">MAÑANA</span></mat-card-title
+        >
+      </mat-card-header>
+      <!-- usa el componente videocard y le pasa el src del video a mostrar -->
+      <app-video-card class="margin-auto" [srcVideo]="srcVideoMornings">
+      </app-video-card>
+      <mat-card-content>
+        <p class="hidden show-pc margin-top">
+          Brindamos la oportunidad de asistir a nuestras clases a las personas
+          que por tener horarios complicados, no han encontrado academias de
+          baile en Málaga que se ajusten a su tiempo libre. Se pueden combinar o
+          alternar los horarios en función de las necesidades, ya que tanto por
+          la mañana como por la tarde los contenidos que enseñamos son los
+          mismos.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- CLASES INICIANCION -->
+  <div class="content-card-container">
+    <mat-card id="bienvenida-tlf" class="content-card">
+      <mat-card-header class="justify-center">
+        <mat-card-title class="subtitle"
+          >INICIACIÓN <span class="text-red">DESDE CERO</span></mat-card-title
+        >
+      </mat-card-header>
+      <h3 class="subtitle margin-smaller">
+        Nuevos grupos para <span class="text-red bold">principiantes</span> cada
+        2 ó 3 meses
+      </h3>
+      <img
+        mat-card-image
+        src="assets/img/Clases-para-principiantes.jpg"
+        alt="Clases de salsa en Torremolinos"
+        title="Clases de Salsa en Torremolinos"
+        class="horarios-img hide-pc"
+      />
+      <mat-card-content>
+        <p class="hidden show-pc margin-top">
+          Clases de salsa, bachata y kizomba en Málaga para principiantes.<br />
+          Te brindamos la oportunidad de dar tus primeros pasos con gente de tu
+          mismo nivel. Grupos reducidos donde tendrás atención personalizada.<br />
+          Nos gusta ayudar a los nuevos miembros a integrarse siguiendo su
+          propio ritmo, asegurándonos que disfruten desde la primera clase.<br />
+          Tras haber aprendido los pasos básicos, tendrás la posibilidad de
+          pasar al siguiente nivel, donde aprenderás figuras sencillas.
+        </p>
+      </mat-card-content>
+      <mat-card-actions class="justify-center margin-bottom-1rem">
+        <button
+          mat-raised-button
+          color="primary"
+          [routerLink]="['/singlePostTemplate/' + principiantesPostId]"
+          class="text-red margin-top"
+        >
+          <mat-icon>read_more</mat-icon>
+          Más información
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section>

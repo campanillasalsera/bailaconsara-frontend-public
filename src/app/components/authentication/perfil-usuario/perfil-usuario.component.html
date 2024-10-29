@@ -1,0 +1,411 @@
+<div class="padding-top-adjust">
+  <!-- mustra los accesos del usuario solo si este está logueado -->
+  @if (userLogueado) {
+  <!-- icono y titulo -->
+  <div class="flex justify-center">
+    <div class="icono-container margin-top1rem">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Clases de bachata en Torremolinos"
+        fontIcon="manage_accounts"
+        class="icons"
+      >
+      </mat-icon>
+    </div>
+  </div>
+  <h2 class="title">PERFIL <span class="text-red">USUARIO</span></h2>
+  <!-- si el usuario es un administrador, aparecen más opciones -->
+  @if (adminLogueado) {
+  <!-- boton listar Usuarios -->
+  <div class="boton-listar width-90 margin-auto margin-top-bottom">
+    <button
+      mat-raised-button
+      color="primary"
+      class="width-full"
+      (click)="handleListUsers()"
+    >
+      <mat-icon>list_alt</mat-icon>
+      Lista de usuarios
+    </button>
+  </div>
+  <!-- muestra la lista de usuarios al pulsar el botón -->
+  @if (showTabla) {
+  <!-- tabla con filtro -->
+  <div class="form-container">
+    <h2 class="text-center">LISTA DE <span class="text-red">USUARIOS</span></h2>
+    <!-- filtro input -->
+    <mat-form-field class="form-field filtro">
+      <mat-label class="text-white">Filtrar</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Filtro"
+        #inputFiltro
+      />
+    </mat-form-field>
+    <!-- tabla -->
+    <div class="tabla-container">
+      <table mat-table [dataSource]="dataSource" class="tabla">
+        <!-- Columna nombre -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef class="tabla-header">Nombre</th>
+          <td
+            mat-cell
+            *matCellDef="let usuario"
+            (click)="selectUser(usuario)"
+            class="pointer"
+          >
+            {{ usuario.nombre }}
+          </td>
+        </ng-container>
+
+        <!-- Columna apellidos -->
+        <ng-container matColumnDef="apellidos">
+          <th mat-header-cell *matHeaderCellDef class="tabla-header">
+            Apellidos
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let usuario"
+            (click)="selectUser(usuario)"
+            class="pointer"
+          >
+            {{ usuario.apellidos }}
+          </td>
+        </ng-container>
+
+        <!-- Columna Fecha Nacimiento -->
+        <ng-container matColumnDef="fechanacimiento">
+          <th mat-header-cell *matHeaderCellDef class="tabla-header">
+            Fecha Nacimiento
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let usuario"
+            (click)="selectUser(usuario)"
+            class="pointer"
+          >
+            {{ usuario.fechanacimiento }}
+          </td>
+        </ng-container>
+        <!-- Columna telefono -->
+        <ng-container matColumnDef="telefono">
+          <th mat-header-cell *matHeaderCellDef class="tabla-header">
+            Telefono
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let usuario"
+            (click)="selectUser(usuario)"
+            class="pointer"
+          >
+            {{ usuario.telefono }}
+          </td>
+        </ng-container>
+
+        <!-- Columna email -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef class="tabla-header">Email</th>
+          <td
+            mat-cell
+            *matCellDef="let usuario"
+            (click)="selectUser(usuario)"
+            class="pointer"
+          >
+            {{ usuario.email }}
+          </td>
+        </ng-container>
+
+        <!-- Columna Rol en el baile -->
+        <ng-container matColumnDef="bailerol">
+          <th mat-header-cell *matHeaderCellDef class="tabla-header">
+            Rol en el baile
+          </th>
+          <td mat-cell *matCellDef="let usuario" (click)="selectUser(usuario)">
+            {{ usuario.bailerol }}
+          </td>
+        </ng-container>
+
+        <!-- Columna email confirmado -->
+        <ng-container matColumnDef="enabled">
+          <th mat-header-cell *matHeaderCellDef class="tabla-header">
+            Email confirmado
+          </th>
+          <td mat-cell *matCellDef="let usuario" (click)="selectUser(usuario)">
+            {{ usuario.enabled }}
+          </td>
+        </ng-container>
+
+        <!-- Columna Usuario desbloquado -->
+        <ng-container matColumnDef="notLocked">
+          <th mat-header-cell *matHeaderCellDef class="tabla-header">
+            Usuario desbloqueado
+          </th>
+          <td mat-cell *matCellDef="let usuario" (click)="selectUser(usuario)">
+            {{ usuario.notLocked }}
+          </td>
+        </ng-container>
+
+        <!-- Columna Role de Usuario -->
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef class="tabla-header">
+            Role de Usuario
+          </th>
+          <td mat-cell *matCellDef="let usuario" (click)="selectUser(usuario)">
+            {{ usuario.role }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="seleccionar">
+          <th mat-header-cell *matHeaderCellDef class="tabla-header">Editar</th>
+          <td mat-cell *matCellDef="let usuario">
+            <button mat-icon-button (click)="selectUser(usuario)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+        <!-- se muestra cuando no hay coincidencias con el filtro -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">
+            No hay resultados para tu consulta "{{ inputFiltro.value }}"
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  } }
+
+  <!-- formulario update para usuario(solo puede modificar su propio perfil) y administrador -->
+  <div class="form-container">
+    <h2 class="text-center">
+      DATOS DEL USUARIO @if (adminLogueado) {
+      <span class="text-red">LOGUEADO O SELECCIONADO</span>}
+    </h2>
+    <!-- muestra un spinner mientras recibe respuesta del servidor -->
+    @if (isLoading) {
+    <div class="flex justify-center margin-bottom-1rem">
+      <mat-spinner class="spinner"></mat-spinner>
+    </div>
+    }@else {
+    <form #userForm="ngForm" (ngSubmit)="handleUpdateUser(user.id)">
+      <!-- campo nombre -->
+      <div>
+        <mat-form-field class="form-field">
+          <mat-label class="text-white">Nombre</mat-label>
+          <input
+            matInput
+            placeholder="Nombre"
+            name="nombre"
+            [(ngModel)]="user.nombre"
+            [disabled]="isNotEditable"
+          />
+        </mat-form-field>
+      </div>
+      <!-- campo apellidos -->
+      <div>
+        <mat-form-field class="form-field">
+          <mat-label class="text-white">Apellidos</mat-label>
+          <input
+            matInput
+            placeholder="Apellidos"
+            name="apellidos"
+            [(ngModel)]="user.apellidos"
+            [disabled]="isNotEditable"
+          />
+        </mat-form-field>
+      </div>
+      <!-- campo fecha de nacimiento -->
+      <div>
+        <mat-form-field class="form-field">
+          <mat-label class="text-white">Fecha de nacimiento</mat-label>
+          <input
+            matInput
+            placeholder="Fecha de nacimiento"
+            name="fechanacimiento"
+            [(ngModel)]="user.fechanacimiento"
+            [disabled]="isNotEditable"
+          />
+          <mat-hint>formato aceptado: DD-MM-AAAA</mat-hint>
+        </mat-form-field>
+      </div>
+      <!-- campo telefono -->
+      <div>
+        <mat-form-field class="form-field">
+          <mat-label class="text-white">Telefono</mat-label>
+          <input
+            matInput
+            placeholder="Telefono"
+            name="telefono"
+            [(ngModel)]="user.telefono"
+            [disabled]="isNotEditable"
+          />
+          <mat-hint
+            >+ codigo de tu pais, seguido de nº de telefono, sin
+            espacios.</mat-hint
+          >
+        </mat-form-field>
+      </div>
+      <!-- campo email -->
+      <div>
+        <mat-form-field class="form-field">
+          <mat-label class="text-white">Email</mat-label>
+          <input
+            matInput
+            placeholder="Email"
+            name="email"
+            [(ngModel)]="user.email"
+            disabled="true"
+          />
+        </mat-form-field>
+      </div>
+      <!-- campo rol en el baile -->
+      <div>
+        <mat-radio-group
+          class="matRadioButtons flex wrap justify-space-around"
+          aria-label="Selecciona una opción"
+          name="bailerol"
+          [(ngModel)]="user.bailerol"
+          [disabled]="isNotEditable"
+        >
+          <mat-radio-button value="lider" [checked]="isLider"
+            >Lider</mat-radio-button
+          >
+          <mat-radio-button value="follower" [checked]="isFollower"
+            >Follower</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+      <!-- botón para acceder a editar -->
+      @if (isNotEditable) {
+      <div class="flex">
+        <button
+          mat-raised-button
+          color="primary"
+          class="form-field margin-top-bottom"
+          (click)="handleEditUser()"
+        >
+          <mat-icon>edit_square</mat-icon>
+          Editar
+        </button>
+      </div>
+      }
+      <!-- cuando el formulario está en modo editar, aparecen los botones aplicar o cancelar -->
+      @if (!isNotEditable) {
+      <div class="flex">
+        <!-- boton actualizar -->
+        <button
+          mat-fab
+          extended
+          color="primary"
+          type="submit"
+          class="margin-top-bottom"
+        >
+          <mat-icon>check</mat-icon>
+          Aplicar
+        </button>
+        <!-- boton cancelar -->
+        <button
+          mat-fab
+          extended
+          color="primary"
+          class="margin-top-bottom"
+          (click)="handleCloseForm()"
+        >
+          <mat-icon>close</mat-icon>
+          Cancelar
+        </button>
+      </div>
+      }
+    </form>
+    }
+
+    <div class="flex flex-column">
+      @if (adminLogueado) {
+      <!-- boton habilitar -->
+      <button
+        mat-raised-button
+        color="primary"
+        class="margin-top-bottom form-field"
+        (click)="handleHabilitarUsuario()"
+      >
+        <mat-icon>person_check</mat-icon>
+        Habilitar
+      </button>
+
+      <!-- boton deshabilitar -->
+      <button
+        mat-raised-button
+        color="primary"
+        class="margin-top-bottom form-field"
+        (click)="handleDeshabilitarUsuario()"
+      >
+        <mat-icon>person_off</mat-icon>
+        Deshabilitar
+      </button>
+
+      <!-- boton cambiar ROLE USUARIO -->
+      <mat-form-field class="selector width-90 margin-auto form-field">
+        <mat-label class="text-white">Asigna un Rol al Usuario</mat-label>
+        <mat-select
+          matNativeControl
+          class="matSelect"
+          (selectionChange)="
+            handleChangeUserRole(user.id, selectUserRole.value)
+          "
+          #selectUserRole
+        >
+          <mat-option value="USER" class="matOption">USUARIO</mat-option>
+          <mat-option value="ADMIN" class="matOption">ADMIISTRADOR</mat-option>
+        </mat-select>
+      </mat-form-field>
+      }
+      <!-- link para cambiar la contraseña -->
+      <button
+        mat-button
+        color="primary"
+        class="margin-top-bottom form-field"
+        (click)="handleForgotPassword(user.email)"
+      >
+        ¿Has olvidado tu contraseña?
+      </button>
+      <!-- boton borrar cuenta con un menú para confirmar -->
+      <button
+        mat-button
+        color="primary"
+        class="margin-top-bottom form-field"
+        (click)="handleEliminarUsuario()"
+      >
+        <mat-icon>delete</mat-icon>
+        Eliminar cuenta
+      </button>
+    </div>
+  </div>
+
+  <!-- Si no hay un usuario logueado muestra un aviso que es necesario estar logueado para acceder -->
+  }@else {
+  <!-- mensaje para que el usuario se loguee si quiere acceder aquí -->
+  <div class="custom-card margin-bottom-1rem margin-top1rem">
+    <div
+      class="flex flex-column align-items-center justify-between width-90 margin-auto"
+    >
+      <div class="icono-container">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Clases de bachata en Torremolinos"
+          fontIcon="report"
+          class="icons"
+        >
+        </mat-icon>
+      </div>
+      <mat-card-subtitle class="margin-top1rem"
+        >Necesitas estar logueado para tener acceso a este
+        área</mat-card-subtitle
+      >
+    </div>
+  </div>
+  }
+</div>

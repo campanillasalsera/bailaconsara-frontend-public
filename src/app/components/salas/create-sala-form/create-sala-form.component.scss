@@ -1,0 +1,66 @@
+//contenedor del formulario
+.form-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 75vh;
+  text-align: center;
+}
+.icono-container {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  background-color: red;
+  margin: 1rem auto;
+}
+.icons {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+  align-self: center;
+}
+.boton-cerrar {
+  margin: 0.5rem 0.5rem -2rem auto;
+}
+//ancho y margen del container del formulario
+::ng-deep .cdk-overlay-pane.mat-mdc-dialog-panel {
+  width: 100%;
+  margin-top: 5rem;
+}
+
+//color de fondo y borde del container del formulario
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  background-color: #212121;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  border: 4px solid red;
+}
+
+//tamaño de cada uno de los campos del formulario
+.form-field {
+  width: 90%;
+  margin-top: 1rem;
+}
+
+//margenes del boton submit
+.margin-top-bottom {
+  margin: 3rem auto;
+}
+.margin-auto {
+  margin: auto !important;
+}
+.generos-musicales {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.check-box {
+  --mdc-checkbox-selected-checkmark-color: red;
+}

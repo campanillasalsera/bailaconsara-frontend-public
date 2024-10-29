@@ -1,0 +1,131 @@
+.carrusel-container {
+  width: 95%;
+  margin: 1rem auto 2rem auto;
+  border-radius: 5px;
+  background-color: #ffffff00;
+}
+
+.img-container {
+  width: 100px;
+  margin: 1rem auto;
+}
+.carrusel-container img {
+  display: none;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.carrusel-container blockquote,
+.carrusel-container p {
+  display: none;
+}
+
+.comilla {
+  font-size: 20px;
+  color: red;
+}
+
+.carrusel-container img.imagen-activa {
+  display: block;
+  width: 100%;
+}
+
+.carrusel-container blockquote.text-activo {
+  display: block;
+  width: 90%;
+  margin: auto;
+}
+
+.carrusel-container p.nombre-activo {
+  display: block;
+  width: 90%;
+  text-align: center;
+  margin: 2rem auto;
+  font-size: medium;
+}
+
+blockquote {
+  height: 7rem;
+  overflow: auto;
+  padding: 0 0.6em;
+  scrollbar-width: thin; /*para que la barra de scroll se vea mas fina en mozilla*/
+}
+
+/****SCROLL BAR*******
+le quitamos la apariencia de serie y la hacemos más fina*/
+blockquote::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+}
+
+/*le damos color y redondeamos bordes del asa y del carril*/
+blockquote::-webkit-scrollbar-thumb {
+  background-color: #fe0202;
+  border-radius: 20px;
+}
+blockquote::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #2d2d2d;
+}
+
+/*de damos color al hover del asa*/
+blockquote::-webkit-scrollbar-thumb:hover {
+  background: #ff0000;
+}
+
+/* indicadores-dot */
+.carrusel-dot-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  cursor: pointer;
+  height: 7px;
+  width: 7px;
+  margin: 15px 3px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  transition: opacity 1s ease;
+  opacity: 0.6;
+}
+
+.activa,
+.dot:hover {
+  background-color: red;
+}
+
+/* botones a izquierda y derecha */
+.botones-carrusel-container {
+  position: absolute;
+  bottom: 66%;
+  left: 5.2%;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+/* Vista Tablet*/
+@media screen and (min-width: 791px) and (max-width: 1007px) {
+  /*Si la pantalla tiene enre 791 y 1007 px*/
+}
+
+/***************** Vista PC 1008 ****************/
+@media screen and (min-width: 1008px) {
+  blockquote {
+    height: 10rem;
+    overflow: auto;
+    padding: 0 0.6em;
+    scrollbar-width: thin; /*para que la barra de scroll se vea mas fina en mozilla*/
+  }
+  /* indicadores-dot */
+  .carrusel-container {
+    margin-top: 2rem;
+  }
+
+  /* botones a izquierda y derecha */
+  .hide {
+    display: none;
+  }
+}
